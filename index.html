@@ -2,163 +2,349 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Student Planner</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Pathway Planner</title>
   <style>
+    * { box-sizing: border-box; }
+
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      background: #f4f6f8;
+      font-family: Inter, Arial, sans-serif;
+      background: #f4f7fb;
+      color: #182230;
     }
 
     header {
-      background: #111;
+      background: #102a43;
       color: white;
-      padding: 20px;
+      padding: 36px 20px;
       text-align: center;
-      font-size: 22px;
-      font-weight: bold;
     }
 
-    .container {
-      max-width: 800px;
-      margin: 30px auto;
-      padding: 20px;
+    header h1 {
+      margin: 0;
+      font-size: 2.4rem;
+    }
+
+    header p {
+      max-width: 720px;
+      margin: 12px auto 0;
+      color: #d9e8f5;
+      line-height: 1.6;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 32px auto;
+      padding: 0 20px;
+      display: grid;
+      gap: 24px;
     }
 
     .card {
       background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      margin-bottom: 20px;
+      border: 1px solid #d9e2ec;
+      border-radius: 10px;
+      box-shadow: 0 16px 36px rgba(16, 42, 67, 0.08);
+      padding: 24px;
     }
 
-    input, button {
-      padding: 10px;
-      margin: 5px 0;
-      width: 100%;
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    label {
+      font-weight: 700;
+      display: grid;
+      gap: 8px;
+    }
+
+    select, input {
+      padding: 12px;
+      border: 1px solid #cbd5e1;
       border-radius: 8px;
-      border: 1px solid #ddd;
-      font-size: 14px;
+      font-size: 1rem;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    .checkboxes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .checkboxes label {
+      border: 1px solid #d9e2ec;
+      border-radius: 8px;
+      padding: 12px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      font-weight: 600;
+      background: #fbfdff;
     }
 
     button {
-      background: #111;
+      margin-top: 20px;
+      background: #00897b;
       color: white;
-      cursor: pointer;
       border: none;
+      padding: 14px 18px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
     }
 
     button:hover {
-      background: #333;
+      background: #007467;
+    }
+
+    .results {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 24px;
+    }
+
+    .profile h2, .roadmap h2 {
+      margin-top: 0;
+      color: #102a43;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e6f4f1;
+      color: #007467;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      margin: 4px 4px 4px 0;
+    }
+
+    .step {
+      border-left: 4px solid #00897b;
+      padding: 0 0 18px 18px;
+      margin-bottom: 18px;
+    }
+
+    .step h3 {
+      margin: 0 0 8px;
+      color: #102a43;
     }
 
     ul {
-      list-style: none;
-      padding: 0;
+      margin: 8px 0 0;
+      padding-left: 20px;
+      line-height: 1.6;
     }
 
-    li {
-      background: #f9f9f9;
-      margin-top: 10px;
-      padding: 10px;
-      border-radius: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    footer {
+      text-align: center;
+      color: #667085;
+      padding: 20px;
+      font-size: 0.9rem;
     }
 
-    .delete {
-      background: red;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
+    @media (max-width: 800px) {
+      .form-grid, .results, .checkboxes {
+        grid-template-columns: 1fr;
+      }
 
-    .small {
-      font-size: 12px;
-      color: gray;
+      header h1 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
-
 <body>
+  <header>
+    <h1>Student Pathway Planner</h1>
+    <p>
+      Enter your grade level and interests to get a personalized roadmap for classes,
+      activities, projects, and internship ideas.
+    </p>
+  </header>
 
-<header>📚 Student Planner</header>
+  <main>
+    <section class="card">
+      <form id="plannerForm">
+        <div class="form-grid">
+          <label>
+            Current Grade
+            <select id="grade">
+              <option value="9">9th Grade</option>
+              <option value="10">10th Grade</option>
+              <option value="11">11th Grade</option>
+              <option value="12">12th Grade</option>
+            </select>
+          </label>
 
-<div class="container">
+          <label>
+            Main Interest
+            <select id="interest">
+              <option value="technology">Technology / Computer Science</option>
+              <option value="medicine">Medicine / Health Science</option>
+              <option value="business">Business / Entrepreneurship</option>
+              <option value="engineering">Engineering / Architecture</option>
+              <option value="law">Law / Public Policy</option>
+              <option value="arts">Arts / Design / Media</option>
+            </select>
+          </label>
 
-  <!-- ADD TASK -->
-  <div class="card">
-    <h3>Add Assignment</h3>
-    <input type="text" id="taskInput" placeholder="Enter assignment (e.g. Math HW Chapter 3)" />
-    <input type="date" id="dateInput" />
-    <button onclick="addTask()">Add Task</button>
-  </div>
+          <label class="full">
+            Career Goal
+            <input id="goal" type="text" placeholder="Example: software engineer, doctor, founder" />
+          </label>
 
-  <!-- TASK LIST -->
-  <div class="card">
-    <h3>Your Tasks</h3>
-    <ul id="taskList"></ul>
-  </div>
-
-</div>
-
-<script>
-  let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-
-  function saveTasks() {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }
-
-  function renderTasks() {
-    const list = document.getElementById("taskList");
-    list.innerHTML = "";
-
-    tasks.forEach((task, index) => {
-      const li = document.createElement("li");
-
-      li.innerHTML = `
-        <div>
-          <strong>${task.text}</strong><br>
-          <span class="small">Due: ${task.date || "No date"}</span>
+          <div class="full">
+            <strong>Strengths</strong>
+            <div class="checkboxes">
+              <label><input type="checkbox" value="Leadership" checked /> Leadership</label>
+              <label><input type="checkbox" value="Math" checked /> Math</label>
+              <label><input type="checkbox" value="Writing" /> Writing</label>
+              <label><input type="checkbox" value="Research" /> Research</label>
+              <label><input type="checkbox" value="Design" /> Design</label>
+              <label><input type="checkbox" value="Service" /> Service</label>
+            </div>
+          </div>
         </div>
-        <button class="delete" onclick="deleteTask(${index})">X</button>
+
+        <button type="submit">Generate My Roadmap</button>
+      </form>
+    </section>
+
+    <section class="results">
+      <div class="card profile">
+        <h2>Student Profile</h2>
+        <div id="profile"></div>
+      </div>
+
+      <div class="card roadmap">
+        <h2>Recommended Roadmap</h2>
+        <div id="roadmap"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Always confirm course requirements and deadlines with your school counselor.
+  </footer>
+
+  <script>
+    const data = {
+      technology: {
+        name: "Technology / Computer Science",
+        classes: ["Computer Science", "AP Computer Science Principles", "Algebra II or Precalculus", "Statistics", "Physics"],
+        activities: ["Coding club", "Robotics", "Hackathons", "Personal app or website portfolio"],
+        internships: ["Local startup internship", "IT assistant role", "Web development summer program", "Open-source contribution"],
+        project: "Build a small app, website, or game and publish it online."
+      },
+      medicine: {
+        name: "Medicine / Health Science",
+        classes: ["Biology", "Chemistry", "Anatomy and Physiology", "Statistics", "Psychology"],
+        activities: ["HOSA", "Hospital volunteering", "Red Cross club", "Science fair"],
+        internships: ["Clinic volunteer role", "Medical office assistant", "Public health program", "Lab shadowing"],
+        project: "Interview a healthcare worker and create a presentation about one medical career."
+      },
+      business: {
+        name: "Business / Entrepreneurship",
+        classes: ["Economics", "Accounting", "Marketing", "Statistics", "Business Law"],
+        activities: ["DECA", "FBLA", "Student government", "School store"],
+        internships: ["Small business internship", "Marketing assistant role", "Startup program", "Nonprofit fundraising team"],
+        project: "Start a simple business idea and track customers, costs, and revenue."
+      },
+      engineering: {
+        name: "Engineering / Architecture",
+        classes: ["Physics", "Precalculus", "Calculus", "Engineering Design", "CAD"],
+        activities: ["Robotics", "Science Olympiad", "Math team", "Maker club"],
+        internships: ["Engineering firm shadowing", "Maker space assistant", "Architecture studio volunteer", "STEM research program"],
+        project: "Design and test a prototype that solves a real problem."
+      },
+      law: {
+        name: "Law / Public Policy",
+        classes: ["Government", "History", "Debate", "Public Speaking", "Statistics"],
+        activities: ["Mock trial", "Debate team", "Model UN", "Student government"],
+        internships: ["Campaign volunteer", "City office internship", "Legal aid volunteer", "Policy research program"],
+        project: "Write a short policy proposal about an issue in your community."
+      },
+      arts: {
+        name: "Arts / Design / Media",
+        classes: ["Graphic Design", "Digital Media", "Photography", "Film", "Art History"],
+        activities: ["Yearbook", "School newspaper", "Theater", "Design club"],
+        internships: ["Studio assistant", "Social media intern", "Museum volunteer", "Design agency shadowing"],
+        project: "Create a portfolio with your best work and short descriptions."
+      }
+    };
+
+    const gradeAdvice = {
+      9: ["Explore different electives.", "Join one club related to your interest.", "Start tracking projects, awards, and service hours."],
+      10: ["Take more challenging classes if ready.", "Look for summer programs or volunteer work.", "Start building a resume."],
+      11: ["Focus on advanced classes connected to your goal.", "Apply for internships and selective summer programs.", "Complete one strong project for your portfolio."],
+      12: ["Keep your schedule strong.", "Use your best experiences in college essays.", "Apply for scholarships, internships, and first-year programs."]
+    };
+
+    const form = document.getElementById("plannerForm");
+    const profile = document.getElementById("profile");
+    const roadmap = document.getElementById("roadmap");
+
+    function generatePlan() {
+      const grade = document.getElementById("grade").value;
+      const interest = document.getElementById("interest").value;
+      const goal = document.getElementById("goal").value || "Not specified yet";
+      const selected = [...document.querySelectorAll("input[type='checkbox']:checked")]
+        .map(box => box.value);
+
+      const track = data[interest];
+
+      profile.innerHTML = `
+        <p><strong>Grade:</strong> ${grade}th Grade</p>
+        <p><strong>Interest:</strong> ${track.name}</p>
+        <p><strong>Career Goal:</strong> ${goal}</p>
+        <p><strong>Strengths:</strong></p>
+        ${selected.map(item => `<span class="badge">${item}</span>`).join("")}
       `;
 
-      list.appendChild(li);
-    });
-  }
+      roadmap.innerHTML = `
+        <div class="step">
+          <h3>1. Academic Focus</h3>
+          <ul>${gradeAdvice[grade].map(item => `<li>${item}</li>`).join("")}</ul>
+        </div>
 
-  function addTask() {
-    const text = document.getElementById("taskInput").value;
-    const date = document.getElementById("dateInput").value;
+        <div class="step">
+          <h3>2. Recommended Classes</h3>
+          <ul>${track.classes.map(item => `<li>${item}</li>`).join("")}</ul>
+        </div>
 
-    if (!text) {
-      alert("Please enter a task!");
-      return;
+        <div class="step">
+          <h3>3. Clubs and Activities</h3>
+          <ul>${track.activities.map(item => `<li>${item}</li>`).join("")}</ul>
+        </div>
+
+        <div class="step">
+          <h3>4. Internship Ideas</h3>
+          <ul>${track.internships.map(item => `<li>${item}</li>`).join("")}</ul>
+        </div>
+
+        <div class="step">
+          <h3>5. Portfolio Project</h3>
+          <ul><li>${track.project}</li></ul>
+        </div>
+      `;
     }
 
-    tasks.push({ text, date });
-    saveTasks();
-    renderTasks();
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      generatePlan();
+    });
 
-    document.getElementById("taskInput").value = "";
-    document.getElementById("dateInput").value = "";
-  }
-
-  function deleteTask(index) {
-    tasks.splice(index, 1);
-    saveTasks();
-    renderTasks();
-  }
-
-  renderTasks();
-</script>
-
+    generatePlan();
+  </script>
 </body>
 </html>
