@@ -1,146 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Course Planner</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Planner</title>
 
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f6f8;
-    margin: 0;
-    padding: 40px;
-}
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f6f8;
+    }
 
-.container {
-    max-width: 700px;
-    margin: auto;
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-}
+    header {
+      background: #111;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+    }
 
-h1 {
-    text-align: center;
-}
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+    }
 
-label {
-    display: block;
-    margin-top: 15px;
-    font-weight: bold;
-}
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
 
-select, button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-}
+    input, button {
+      padding: 10px;
+      margin: 5px 0;
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+    }
 
-button {
-    margin-top: 20px;
-    background: #2563eb;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
+    button {
+      background: #111;
+      color: white;
+      cursor: pointer;
+      border: none;
+    }
 
-button:hover {
-    background: #1d4ed8;
-}
+    button:hover {
+      background: #333;
+    }
 
-#results {
-    margin-top: 25px;
-    padding: 15px;
-    background: #eef4ff;
-    border-radius: 10px;
-}
-</style>
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #f9f9f9;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .delete {
+      background: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .small {
+      font-size: 12px;
+      color: gray;
+    }
+  </style>
 </head>
 
 <body>
 
+<header>📚 Student Planner</header>
+
 <div class="container">
-    <h1>📚 Student Course Planner</h1>
 
-    <label>Grade Level</label>
-    <select id="grade">
-        <option>9th Grade</option>
-        <option>10th Grade</option>
-        <option>11th Grade</option>
-        <option>12th Grade</option>
-    </select>
+  <!-- ADD TASK -->
+  <div class="card">
+    <h3>Add Assignment</h3>
+    <input type="text" id="taskInput" placeholder="Enter assignment (e.g. Math HW Chapter 3)" />
+    <input type="date" id="dateInput" />
+    <button onclick="addTask()">Add Task</button>
+  </div>
 
-    <label>Career Interest</label>
-    <select id="career">
-        <option>Finance</option>
-        <option>Computer Science</option>
-        <option>Engineering</option>
-        <option>Medicine</option>
-    </select>
+  <!-- TASK LIST -->
+  <div class="card">
+    <h3>Your Tasks</h3>
+    <ul id="taskList"></ul>
+  </div>
 
-    <button onclick="generatePlan()">
-        Generate My Plan
-    </button>
-
-    <div id="results"></div>
 </div>
 
 <script>
-function generatePlan() {
+  let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-    const career = document.getElementById("career").value;
+  function saveTasks() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }
 
-    const plans = {
-        Finance: [
-            "AP Statistics",
-            "AP Calculus AB",
-            "AP Macroeconomics",
-            "Investment Club",
-            "Wharton Investment Competition"
-        ],
+  function renderTasks() {
+    const list = document.getElementById("taskList");
+    list.innerHTML = "";
 
-        "Computer Science": [
-            "AP Computer Science A",
-            "AP Calculus BC",
-            "Cybersecurity Club",
-            "Coding Projects",
-            "Hackathons"
-        ],
+    tasks.forEach((task, index) => {
+      const li = document.createElement("li");
 
-        Engineering: [
-            "AP Physics 1",
-            "AP Calculus BC",
-            "Engineering Club",
-            "Robotics",
-            "STEM Competitions"
-        ],
+      li.innerHTML = `
+        <div>
+          <strong>${task.text}</strong><br>
+          <span class="small">Due: ${task.date || "No date"}</span>
+        </div>
+        <button class="delete" onclick="deleteTask(${index})">X</button>
+      `;
 
-        Medicine: [
-            "AP Biology",
-            "AP Chemistry",
-            "Hospital Volunteering",
-            "Health Science Club",
-            "Medical Shadowing"
-        ]
-    };
-
-    let output = `
-        <h2>Recommended Path: ${career}</h2>
-        <ul>
-    `;
-
-    plans[career].forEach(item => {
-        output += `<li>${item}</li>`;
+      list.appendChild(li);
     });
+  }
 
-    output += "</ul>";
+  function addTask() {
+    const text = document.getElementById("taskInput").value;
+    const date = document.getElementById("dateInput").value;
 
-    document.getElementById("results").innerHTML = output;
-}
+    if (!text) {
+      alert("Please enter a task!");
+      return;
+    }
+
+    tasks.push({ text, date });
+    saveTasks();
+    renderTasks();
+
+    document.getElementById("taskInput").value = "";
+    document.getElementById("dateInput").value = "";
+  }
+
+  function deleteTask(index) {
+    tasks.splice(index, 1);
+    saveTasks();
+    renderTasks();
+  }
+
+  renderTasks();
 </script>
 
 </body>
