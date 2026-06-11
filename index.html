@@ -24,6 +24,28 @@
       text-align: center;
     }
 
+    nav {
+      background: #ffffff;
+      border-bottom: 1px solid #d9e2ec;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      color: #102a43;
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    nav a:hover {
+      color: #00897b;
+    }
+
     header h1 {
       margin: 0;
       font-size: 2.8rem;
@@ -105,11 +127,18 @@
     }
 
     select,
-    input {
+    input,
+    textarea {
       padding: 13px;
       border: 1px solid #cbd5e1;
       border-radius: 10px;
       font-size: 1rem;
+      font-family: Arial, sans-serif;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
     }
 
     .full {
@@ -134,7 +163,8 @@
       font-weight: 600;
     }
 
-    button {
+    button,
+    .subscribe-button {
       margin-top: 22px;
       background: #00897b;
       color: white;
@@ -144,9 +174,12 @@
       font-weight: 800;
       font-size: 1rem;
       cursor: pointer;
+      display: inline-block;
+      text-decoration: none;
     }
 
-    button:hover {
+    button:hover,
+    .subscribe-button:hover {
       background: #006f63;
     }
 
@@ -172,35 +205,140 @@
       margin: 4px 4px 4px 0;
     }
 
-    .step {
-      border-left: 5px solid #00897b;
-      padding: 0 0 20px 18px;
-      margin-bottom: 20px;
+    .roadmap-grid {
+      display: grid;
+      gap: 18px;
     }
 
-    .step:nth-child(2) {
-      border-left-color: #3b82f6;
+    .roadmap-box {
+      background: #ffffff;
+      border: 1px solid #d9e2ec;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 10px 24px rgba(16, 42, 67, 0.08);
     }
 
-    .step:nth-child(3) {
-      border-left-color: #f59e0b;
-    }
-
-    .step:nth-child(4) {
-      border-left-color: #ef476f;
-    }
-
-    .step:nth-child(5) {
-      border-left-color: #7c3aed;
-    }
-
-    .step:nth-child(6) {
-      border-left-color: #00897b;
-    }
-
-    .step h3 {
-      margin: 0 0 8px;
+    .roadmap-box h3 {
+      margin: 0 0 10px;
       color: #102a43;
+    }
+
+    .roadmap-box:nth-child(1) {
+      border-top: 6px solid #00897b;
+    }
+
+    .roadmap-box:nth-child(2) {
+      border-top: 6px solid #3b82f6;
+    }
+
+    .roadmap-box:nth-child(3) {
+      border-top: 6px solid #f59e0b;
+    }
+
+    .roadmap-box:nth-child(4) {
+      border-top: 6px solid #ef476f;
+    }
+
+    .roadmap-box:nth-child(5) {
+      border-top: 6px solid #7c3aed;
+    }
+
+    .roadmap-box:nth-child(6) {
+      border-top: 6px solid #14b8a6;
+    }
+
+    .roadmap-box:nth-child(7) {
+      border-top: 6px solid #111827;
+    }
+
+    .roadmap-box:nth-child(8) {
+      border-top: 6px solid #f97316;
+    }
+
+    .goal-box {
+      background: #f8fafc;
+      border: 1px dashed #94a3b8;
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+
+    .subscription {
+      background: linear-gradient(135deg, #102a43, #1d4ed8);
+      color: white;
+      border-radius: 18px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+      box-shadow: 0 18px 40px rgba(16, 42, 67, 0.18);
+    }
+
+    .subscription h2 {
+      color: white;
+      font-size: 2.1rem;
+      margin-bottom: 10px;
+    }
+
+    .subscription p {
+      color: #dbeafe;
+      line-height: 1.7;
+    }
+
+    .price-box {
+      background: white;
+      color: #102a43;
+      border-radius: 16px;
+      padding: 26px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+    }
+
+    .price {
+      font-size: 3rem;
+      font-weight: 900;
+      margin: 8px 0;
+      color: #00897b;
+    }
+
+    .price span {
+      font-size: 1rem;
+      color: #52616f;
+    }
+
+    .feature-list {
+      margin: 18px 0 0;
+      padding-left: 20px;
+      line-height: 1.8;
+    }
+
+    .ai-tools {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .tool-card {
+      background: #ffffff;
+      border: 1px solid #d9e2ec;
+      border-radius: 14px;
+      padding: 22px;
+      border-top: 6px solid #3b82f6;
+      box-shadow: 0 12px 28px rgba(16, 42, 67, 0.08);
+    }
+
+    .tool-card:nth-child(2) {
+      border-top-color: #ef476f;
+    }
+
+    .tool-card:nth-child(3) {
+      border-top-color: #f59e0b;
+    }
+
+    .tool-card p {
+      color: #52616f;
+      line-height: 1.6;
     }
 
     ul {
@@ -220,24 +358,36 @@
       .why,
       .form-grid,
       .results,
-      .checkboxes {
+      .checkboxes,
+      .subscription,
+      .ai-tools {
         grid-template-columns: 1fr;
       }
 
       header h1 {
         font-size: 2.2rem;
       }
+
+      nav {
+        flex-wrap: wrap;
+      }
     }
   </style>
 </head>
 
 <body>
+  <nav>
+    <a href="#planner">Planner</a>
+    <a href="#roadmap-section">Roadmap</a>
+    <a href="#premium">Premium</a>
+  </nav>
+
   <header>
     <h1>Student Pathway Planner</h1>
     <p>
       A smarter planning tool for students who want more than generic advice.
       Get a personalized roadmap with AP classes, extracurriculars, internships,
-      and portfolio ideas based on your grade and career interests.
+      and portfolio ideas based on your grade, strengths, and career interests.
     </p>
   </header>
 
@@ -259,12 +409,12 @@
       </div>
 
       <div class="why-card">
-        <h3>More Than Classes</h3>
-        <p>The planner includes clubs, leadership roles, competitions, projects, and internship ideas.</p>
+        <h3>Personalized Output</h3>
+        <p>The career goal and selected strengths directly change the roadmap students receive.</p>
       </div>
     </section>
 
-    <section class="card">
+    <section class="card" id="planner">
       <h2>Create Your Roadmap</h2>
 
       <form id="plannerForm">
@@ -313,7 +463,7 @@
       </form>
     </section>
 
-    <section class="results">
+    <section class="results" id="roadmap-section">
       <div class="card">
         <h2>Student Profile</h2>
         <div id="profile"></div>
@@ -322,6 +472,57 @@
       <div class="card">
         <h2>Recommended Roadmap</h2>
         <div id="roadmap"></div>
+      </div>
+    </section>
+
+    <section class="subscription" id="premium">
+      <div>
+        <h2>Upgrade to Premium AI Guidance</h2>
+        <p>
+          For students who want deeper feedback, Premium adds AI-powered review tools
+          that help improve essays, extracurricular strategy, and opportunity discovery.
+        </p>
+
+        <ul class="feature-list">
+          <li>AI essay grading with improvement suggestions</li>
+          <li>Extracurricular strength scoring</li>
+          <li>Niche internships, scholarships, and competitions</li>
+          <li>Personalized monthly opportunity recommendations</li>
+          <li>Resume and activity-list feedback</li>
+        </ul>
+      </div>
+
+      <div class="price-box">
+        <h3>Premium Plan</h3>
+        <div class="price">$4.99 <span>/ month</span></div>
+        <p>Affordable guidance for students building a stronger college and career profile.</p>
+        <a class="subscribe-button" href="#">Start Premium</a>
+      </div>
+    </section>
+
+    <section class="ai-tools">
+      <div class="tool-card">
+        <h3>Essay Grader</h3>
+        <p>
+          Upload or paste an essay and receive feedback on clarity, structure,
+          voice, grammar, and how well it answers the prompt.
+        </p>
+      </div>
+
+      <div class="tool-card">
+        <h3>Extracurricular Review</h3>
+        <p>
+          Get a score for leadership, impact, consistency, uniqueness, and connection
+          to your intended major or career path.
+        </p>
+      </div>
+
+      <div class="tool-card">
+        <h3>Niche Opportunities</h3>
+        <p>
+          Discover lesser-known internships, competitions, summer programs,
+          scholarships, and volunteer options based on your interests.
+        </p>
       </div>
     </section>
   </main>
@@ -552,52 +753,121 @@
     const profile = document.getElementById("profile");
     const roadmap = document.getElementById("roadmap");
 
+    function getGoalAdvice(goal, trackName) {
+      const cleanGoal = goal.trim();
+
+      if (!cleanGoal) {
+        return [
+          "Choose a possible career goal so your roadmap can become more specific.",
+          "Talk to a counselor, teacher, or mentor about careers related to " + trackName + "."
+        ];
+      }
+
+      return [
+        "Because your goal is " + cleanGoal + ", look for classes and activities that directly prove interest in that path.",
+        "Create a resume section called '" + cleanGoal + " Preparation' and add related projects, clubs, service, and internships.",
+        "Find one professional with this career and ask for an informational interview or job shadowing opportunity."
+      ];
+    }
+
+    function getStrengthAdvice(strengths) {
+      const advice = [];
+
+      if (strengths.includes("Leadership")) {
+        advice.push("Use leadership by becoming a club officer, team captain, event organizer, or project lead.");
+      }
+
+      if (strengths.includes("Math")) {
+        advice.push("Use math strength by taking advanced math, joining math team, or adding data/statistics to a project.");
+      }
+
+      if (strengths.includes("Writing")) {
+        advice.push("Use writing strength by publishing articles, writing research summaries, or creating strong essays and proposals.");
+      }
+
+      if (strengths.includes("Research")) {
+        advice.push("Use research strength by entering science fair, contacting professors, or creating an independent research project.");
+      }
+
+      if (strengths.includes("Design")) {
+        advice.push("Use design strength by building a visual portfolio, designing presentations, or improving websites and social media for clubs.");
+      }
+
+      if (strengths.includes("Community Service")) {
+        advice.push("Use service strength by leading a volunteer project connected to your career interest.");
+      }
+
+      if (advice.length === 0) {
+        advice.push("Select at least one strength so the planner can recommend a more personalized strategy.");
+      }
+
+      return advice;
+    }
+
     function generatePlan() {
       const grade = document.getElementById("grade").value;
       const interest = document.getElementById("interest").value;
-      const goal = document.getElementById("goal").value || "Not specified yet";
+      const goal = document.getElementById("goal").value || "";
       const selected = [...document.querySelectorAll("input[type='checkbox']:checked")]
         .map(box => box.value);
 
       const track = data[interest];
+      const goalAdvice = getGoalAdvice(goal, track.name);
+      const strengthAdvice = getStrengthAdvice(selected);
 
       profile.innerHTML = `
         <p><strong>Grade:</strong> ${grade}th Grade</p>
         <p><strong>Interest:</strong> ${track.name}</p>
-        <p><strong>Career Goal:</strong> ${goal}</p>
+        <p><strong>Career Goal:</strong> ${goal || "Not specified yet"}</p>
         <p><strong>Strengths:</strong></p>
         ${selected.map(item => `<span class="badge">${item}</span>`).join("")}
       `;
 
       roadmap.innerHTML = `
-        <div class="step">
-          <h3>1. Grade-Specific Focus</h3>
-          <ul>${gradeAdvice[grade].map(item => `<li>${item}</li>`).join("")}</ul>
-        </div>
+        <div class="roadmap-grid">
+          <div class="roadmap-box">
+            <h3>1. Grade-Specific Focus</h3>
+            <ul>${gradeAdvice[grade].map(item => `<li>${item}</li>`).join("")}</ul>
+          </div>
 
-        <div class="step">
-          <h3>2. Specific AP Classes to Consider</h3>
-          <ul>${track.classes.map(item => `<li>${item}</li>`).join("")}</ul>
-        </div>
+          <div class="roadmap-box">
+            <h3>2. Specific AP Classes to Consider</h3>
+            <ul>${track.classes.map(item => `<li>${item}</li>`).join("")}</ul>
+          </div>
 
-        <div class="step">
-          <h3>3. Clubs and Activities</h3>
-          <ul>${track.activities.map(item => `<li>${item}</li>`).join("")}</ul>
-        </div>
+          <div class="roadmap-box">
+            <h3>3. Clubs and Activities</h3>
+            <ul>${track.activities.map(item => `<li>${item}</li>`).join("")}</ul>
+          </div>
 
-        <div class="step">
-          <h3>4. Strong Extra Curriculars</h3>
-          <ul>${track.extras.map(item => `<li>${item}</li>`).join("")}</ul>
-        </div>
+          <div class="roadmap-box">
+            <h3>4. Strong Extra Curriculars</h3>
+            <ul>${track.extras.map(item => `<li>${item}</li>`).join("")}</ul>
+          </div>
 
-        <div class="step">
-          <h3>5. Internship Ideas</h3>
-          <ul>${track.internships.map(item => `<li>${item}</li>`).join("")}</ul>
-        </div>
+          <div class="roadmap-box">
+            <h3>5. Career Goal Strategy</h3>
+            <ul>${goalAdvice.map(item => `<li>${item}</li>`).join("")}</ul>
+            <div class="goal-box">
+              Your roadmap is being customized around:
+              <strong>${goal || "a future career goal"}</strong>
+            </div>
+          </div>
 
-        <div class="step">
-          <h3>6. Portfolio Project</h3>
-          <ul><li>${track.project}</li></ul>
+          <div class="roadmap-box">
+            <h3>6. Strength-Based Strategy</h3>
+            <ul>${strengthAdvice.map(item => `<li>${item}</li>`).join("")}</ul>
+          </div>
+
+          <div class="roadmap-box">
+            <h3>7. Internship Ideas</h3>
+            <ul>${track.internships.map(item => `<li>${item}</li>`).join("")}</ul>
+          </div>
+
+          <div class="roadmap-box">
+            <h3>8. Portfolio Project</h3>
+            <ul><li>${track.project}</li></ul>
+          </div>
         </div>
       `;
     }
@@ -611,4 +881,3 @@
   </script>
 </body>
 </html>
-```
