@@ -6,9 +6,7 @@
   <title>Student Pathway Planner</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -18,26 +16,31 @@
     }
 
     nav {
-      background: #ffffff;
+      background: white;
       border-bottom: 1px solid #d9e2ec;
       padding: 14px 20px;
       display: flex;
       justify-content: center;
-      gap: 18px;
+      gap: 14px;
       position: sticky;
       top: 0;
       z-index: 10;
       flex-wrap: wrap;
     }
 
-    nav a {
+    .nav-btn {
+      border: 0;
+      background: #eef4ff;
       color: #102a43;
-      text-decoration: none;
+      padding: 12px 16px;
+      border-radius: 999px;
       font-weight: 800;
+      cursor: pointer;
     }
 
-    nav a:hover {
-      color: #00897b;
+    .nav-btn.active {
+      background: #00897b;
+      color: white;
     }
 
     header {
@@ -53,7 +56,7 @@
     }
 
     header p {
-      max-width: 820px;
+      max-width: 850px;
       margin: 14px auto 0;
       line-height: 1.7;
       color: #e8f6f4;
@@ -63,7 +66,14 @@
     main {
       max-width: 1150px;
       margin: 32px auto;
-      padding: 0 20px;
+      padding: 0 20px 40px;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
       display: grid;
       gap: 26px;
     }
@@ -112,9 +122,10 @@
     .why-card p,
     .section-note,
     .tool-card p,
-    .subscription p {
+    .about-card p,
+    .premium-card p {
       color: #52616f;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     .form-grid {
@@ -204,24 +215,22 @@
     }
 
     .roadmap-grid,
-    .ranking-grid {
+    .ranking-grid,
+    .premium-grid,
+    .about-grid {
       display: grid;
       gap: 18px;
     }
 
     .roadmap-box,
-    .rank-card {
-      background: #ffffff;
+    .rank-card,
+    .premium-card,
+    .about-card {
+      background: white;
       border: 1px solid #d9e2ec;
       border-radius: 14px;
       padding: 20px;
       box-shadow: 0 10px 24px rgba(16, 42, 67, 0.08);
-    }
-
-    .roadmap-box h3,
-    .rank-card h3 {
-      margin: 0 0 10px;
-      color: #102a43;
     }
 
     .roadmap-box:nth-child(1) { border-top: 6px solid #00897b; }
@@ -301,7 +310,7 @@
       line-height: 1.6;
     }
 
-    .subscription {
+    .premium-hero {
       background: linear-gradient(135deg, #102a43, #1d4ed8);
       color: white;
       border-radius: 18px;
@@ -313,10 +322,15 @@
       box-shadow: 0 18px 40px rgba(16, 42, 67, 0.18);
     }
 
-    .subscription h2 {
+    .premium-hero h2 {
       color: white;
-      font-size: 2.1rem;
+      font-size: 2.2rem;
       margin-bottom: 10px;
+    }
+
+    .premium-hero p {
+      color: #dbeafe;
+      line-height: 1.7;
     }
 
     .price-box {
@@ -339,28 +353,43 @@
       color: #52616f;
     }
 
-    .ai-tools {
-      display: grid;
+    .premium-grid {
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
     }
 
-    .tool-card {
-      background: #ffffff;
-      border: 1px solid #d9e2ec;
-      border-radius: 14px;
-      padding: 22px;
-      border-top: 6px solid #3b82f6;
-      box-shadow: 0 12px 28px rgba(16, 42, 67, 0.08);
+    .premium-card:nth-child(1) { border-top: 6px solid #3b82f6; }
+    .premium-card:nth-child(2) { border-top: 6px solid #ef476f; }
+    .premium-card:nth-child(3) { border-top: 6px solid #f59e0b; }
+    .premium-card:nth-child(4) { border-top: 6px solid #00897b; }
+    .premium-card:nth-child(5) { border-top: 6px solid #7c3aed; }
+    .premium-card:nth-child(6) { border-top: 6px solid #111827; }
+
+    .about-hero {
+      background: linear-gradient(135deg, #ffffff, #eefaf7);
+      border: 1px solid #cdeee7;
+      border-radius: 18px;
+      padding: 34px;
+      box-shadow: 0 16px 36px rgba(16, 42, 67, 0.1);
     }
 
-    .tool-card:nth-child(2) {
-      border-top-color: #ef476f;
+    .about-hero h2 {
+      font-size: 2.2rem;
     }
 
-    .tool-card:nth-child(3) {
-      border-top-color: #f59e0b;
+    .about-hero p {
+      max-width: 850px;
+      color: #52616f;
+      line-height: 1.75;
+      font-size: 1.05rem;
     }
+
+    .about-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .about-card:nth-child(1) { border-top: 6px solid #00897b; }
+    .about-card:nth-child(2) { border-top: 6px solid #f59e0b; }
+    .about-card:nth-child(3) { border-top: 6px solid #3b82f6; }
 
     ul {
       margin: 8px 0 0;
@@ -380,8 +409,9 @@
       .form-grid,
       .results,
       .checkboxes,
-      .subscription,
-      .ai-tools {
+      .premium-hero,
+      .premium-grid,
+      .about-grid {
         grid-template-columns: 1fr;
       }
 
@@ -394,145 +424,210 @@
 
 <body>
   <nav>
-    <a href="#planner">Planner</a>
-    <a href="#roadmap-section">Roadmap</a>
-    <a href="#ec-ranker">EC Ranker</a>
-    <a href="#premium">Premium</a>
+    <button class="nav-btn active" data-page="plannerPage">Planner</button>
+    <button class="nav-btn" data-page="premiumPage">Premium</button>
+    <button class="nav-btn" data-page="aboutPage">About Us</button>
   </nav>
 
   <header>
     <h1>Student Pathway Planner</h1>
     <p>
-      A smarter planning tool for students who want more than generic advice.
-      Get a personalized roadmap with AP classes, extracurriculars, real internship examples,
-      college strategy, and portfolio ideas based on your grade, strengths, and career interests.
+      A smarter planning tool that helps students choose AP classes, extracurriculars,
+      internships, college strategies, and portfolio projects based on their grade,
+      strengths, dream college, and career goals.
     </p>
   </header>
 
   <main>
-    <section class="why">
-      <div class="why-card">
-        <h3>Better Than Random AI</h3>
-        <p>This planner organizes advice into a clear roadmap instead of giving a long, scattered answer.</p>
-      </div>
-      <div class="why-card">
-        <h3>Grade-Specific</h3>
-        <p>Recommendations change depending on whether the student is in 9th, 10th, 11th, or 12th grade.</p>
-      </div>
-      <div class="why-card">
-        <h3>Top College Strategy</h3>
-        <p>Choose from a large list of selective colleges and get major-specific admissions guidance.</p>
-      </div>
-      <div class="why-card">
-        <h3>Real Opportunities</h3>
-        <p>The roadmap includes internships, programs, competitions, and links based on the student’s interest.</p>
-      </div>
-    </section>
+    <section class="page active" id="plannerPage">
+      <section class="why">
+        <div class="why-card">
+          <h3>Better Than Random AI</h3>
+          <p>This planner turns advice into a clear roadmap instead of giving a long, scattered answer.</p>
+        </div>
+        <div class="why-card">
+          <h3>Grade-Specific</h3>
+          <p>Recommendations change based on whether the student is in 9th, 10th, 11th, or 12th grade.</p>
+        </div>
+        <div class="why-card">
+          <h3>Top College Strategy</h3>
+          <p>Choose from many selective colleges and get major-specific admissions guidance.</p>
+        </div>
+        <div class="why-card">
+          <h3>Real Opportunities</h3>
+          <p>The roadmap includes internships, programs, competitions, and links based on student interests.</p>
+        </div>
+      </section>
 
-    <section class="card" id="planner">
-      <h2>Create Your Roadmap</h2>
+      <section class="card">
+        <h2>Create Your Roadmap</h2>
 
-      <form id="plannerForm">
-        <div class="form-grid">
-          <label>
-            Current Grade
-            <select id="grade">
-              <option value="9">9th Grade</option>
-              <option value="10">10th Grade</option>
-              <option value="11">11th Grade</option>
-              <option value="12">12th Grade</option>
-            </select>
-          </label>
+        <form id="plannerForm">
+          <div class="form-grid">
+            <label>
+              Current Grade
+              <select id="grade">
+                <option value="9">9th Grade</option>
+                <option value="10">10th Grade</option>
+                <option value="11">11th Grade</option>
+                <option value="12">12th Grade</option>
+              </select>
+            </label>
 
-          <label>
-            Main Interest
-            <select id="interest"></select>
-          </label>
+            <label>
+              Main Interest
+              <select id="interest"></select>
+            </label>
 
-          <label>
-            Career Goal
-            <select id="goal"></select>
-          </label>
+            <label>
+              Career Goal
+              <select id="goal"></select>
+            </label>
 
-          <label>
-            Dream College
-            <select id="college"></select>
-          </label>
+            <label>
+              Dream College
+              <select id="college"></select>
+            </label>
 
-          <div class="full">
-            <strong>Strengths</strong>
-            <div class="checkboxes" id="strengthBoxes"></div>
+            <div class="full">
+              <strong>Strengths</strong>
+              <div class="checkboxes" id="strengthBoxes"></div>
+            </div>
           </div>
+
+          <button type="submit">Generate My Roadmap</button>
+        </form>
+      </section>
+
+      <section class="results">
+        <div class="card">
+          <h2>Student Profile</h2>
+          <div id="profile"></div>
         </div>
 
-        <button type="submit">Generate My Roadmap</button>
-      </form>
-    </section>
+        <div class="card">
+          <h2>Recommended Roadmap</h2>
+          <div id="roadmap"></div>
+        </div>
+      </section>
 
-    <section class="results" id="roadmap-section">
-      <div class="card">
-        <h2>Student Profile</h2>
-        <div id="profile"></div>
-      </div>
-
-      <div class="card">
-        <h2>Recommended Roadmap</h2>
-        <div id="roadmap"></div>
-      </div>
-    </section>
-
-    <section class="card" id="ec-ranker">
-      <h2>Extracurricular Ranking</h2>
-      <p class="section-note">
-        The free version gives a broad ranking of recommended activities. Premium unlocks detailed scoring,
-        essay positioning, uniqueness rating, and step-by-step improvement advice.
-      </p>
-      <div id="ranking"></div>
-    </section>
-
-    <section class="subscription" id="premium">
-      <div>
-        <h2>Upgrade to Premium AI Guidance</h2>
-        <p>
-          For students who want deeper feedback, Premium adds AI-powered review tools
-          that help improve essays, extracurricular strategy, and opportunity discovery.
+      <section class="card">
+        <h2>Extracurricular Ranking</h2>
+        <p class="section-note">
+          The free version gives a broad ranking of recommended activities. Premium unlocks detailed scoring,
+          essay positioning, uniqueness rating, and step-by-step improvement advice.
         </p>
-
-        <ul>
-          <li>AI essay grading with improvement suggestions</li>
-          <li>Extracurricular strength scoring</li>
-          <li>Niche internships, scholarships, and competitions</li>
-          <li>Personalized monthly opportunity recommendations</li>
-          <li>Resume and activity-list feedback</li>
-        </ul>
-      </div>
-
-      <div class="price-box">
-        <h3>Premium Plan</h3>
-        <div class="price">$4.99 <span>/ month</span></div>
-        <p>Affordable guidance for students building a stronger college and career profile.</p>
-        <a class="subscribe-button" href="#">Start Premium</a>
-      </div>
+        <div id="ranking"></div>
+      </section>
     </section>
 
-    <section class="ai-tools">
-      <div class="tool-card">
-        <h3>Essay Grader</h3>
-        <p>Upload or paste an essay and receive feedback on clarity, structure, voice, grammar, and prompt fit.</p>
-      </div>
-      <div class="tool-card">
-        <h3>Extracurricular Review</h3>
-        <p>Get a score for leadership, impact, consistency, uniqueness, and connection to your intended major.</p>
-      </div>
-      <div class="tool-card">
-        <h3>Niche Opportunities</h3>
-        <p>Discover lesser-known internships, competitions, summer programs, scholarships, and volunteer options.</p>
-      </div>
+    <section class="page" id="premiumPage">
+      <section class="premium-hero">
+        <div>
+          <h2>Upgrade to Premium AI Guidance</h2>
+          <p>
+            Premium is for students who want deeper, more personal feedback. Instead of only giving a general roadmap,
+            Premium helps grade essays, review extracurriculars, and find niche opportunities that match a student’s
+            goals, strengths, and dream college.
+          </p>
+
+          <ul>
+            <li>AI essay grading with improvement suggestions</li>
+            <li>Extracurricular strength scoring</li>
+            <li>Niche internships, scholarships, and competitions</li>
+            <li>Personalized monthly opportunity recommendations</li>
+            <li>Resume and activity-list feedback</li>
+          </ul>
+        </div>
+
+        <div class="price-box">
+          <h3>Premium Plan</h3>
+          <div class="price">$4.99 <span>/ month</span></div>
+          <p>Affordable guidance for students building a stronger college and career profile.</p>
+          <a class="subscribe-button" href="#">Start Premium</a>
+        </div>
+      </section>
+
+      <section class="premium-grid">
+        <div class="premium-card">
+          <h3>Essay Grader</h3>
+          <p>Students can paste essays and receive feedback on structure, clarity, voice, grammar, and whether the essay actually answers the prompt.</p>
+        </div>
+
+        <div class="premium-card">
+          <h3>Extracurricular Scoring</h3>
+          <p>Premium can score leadership, impact, consistency, uniqueness, and connection to the student’s intended major or career path.</p>
+        </div>
+
+        <div class="premium-card">
+          <h3>Niche Opportunities</h3>
+          <p>Students can get more specific internships, summer programs, scholarships, competitions, and volunteer options based on their profile.</p>
+        </div>
+
+        <div class="premium-card">
+          <h3>College Fit Strategy</h3>
+          <p>Premium can explain how a student should position their major, essays, and activities for different college types.</p>
+        </div>
+
+        <div class="premium-card">
+          <h3>Resume Review</h3>
+          <p>Students can improve activity descriptions, make accomplishments sound stronger, and organize their profile more clearly.</p>
+        </div>
+
+        <div class="premium-card">
+          <h3>Monthly Action Plan</h3>
+          <p>Premium can create a month-by-month checklist so students know exactly what to do next.</p>
+        </div>
+      </section>
+    </section>
+
+    <section class="page" id="aboutPage">
+      <section class="about-hero">
+        <h2>About Us</h2>
+        <p>
+          We started Student Pathway Planner to help more students feel like they actually have a chance.
+          A lot of students want to get into college, find opportunities, and build a strong future, but they
+          do not always know what classes to take, what activities matter, or where to even begin.
+        </p>
+        <p>
+          Our goal is to make college and career planning easier to understand. Instead of leaving students
+          to guess, we help them turn their interests into a plan: classes, extracurriculars, internships,
+          projects, and college strategy. We believe every student deserves access to guidance, not just the
+          students who already have private counselors or expensive resources.
+        </p>
+      </section>
+
+      <section class="about-grid">
+        <div class="about-card">
+          <h3>Our Mission</h3>
+          <p>
+            To give students a clearer path toward college, careers, and opportunities by making planning
+            simple, personalized, and accessible.
+          </p>
+        </div>
+
+        <div class="about-card">
+          <h3>Why We Built This</h3>
+          <p>
+            Many students are capable, talented, and hardworking, but they miss opportunities because they
+            never hear about them early enough. This planner helps students start earlier and make smarter moves.
+          </p>
+        </div>
+
+        <div class="about-card">
+          <h3>What We Believe</h3>
+          <p>
+            Students should not have to figure everything out alone. With the right roadmap, support, and
+            opportunities, more students can build confidence and compete for their goals.
+          </p>
+        </div>
+      </section>
     </section>
   </main>
 
   <footer>
-    Use this as a starting point. Always confirm AP availability, deadlines, college admissions rules, and opportunity eligibility with official websites or your counselor.
+    Use this as a starting point. Always confirm AP availability, deadlines, college admissions rules,
+    and opportunity eligibility with official websites or your counselor.
   </footer>
 
   <script>
@@ -713,7 +808,7 @@
       stem: {
         admitStyle: [
           "This college is especially strong in STEM, engineering, computing, research, or technical innovation.",
-          "Applicants should show advanced math/science preparation, problem-solving, and hands-on building or research.",
+          "Applicants should show advanced math and science preparation, problem-solving, and hands-on building or research.",
           "Major alignment is stronger when projects, competitions, coursework, and activities all point in the same direction."
         ],
         advice: "Show proof that you build, solve, test, code, research, or compete. Technical evidence matters a lot."
@@ -788,6 +883,17 @@
     strengths.forEach((strength, index) => {
       const checked = index < 2 ? "checked" : "";
       strengthBoxes.innerHTML += `<label><input type="checkbox" value="${strength}" ${checked} /> ${strength}</label>`;
+    });
+
+    document.querySelectorAll(".nav-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".nav-btn").forEach(btn => btn.classList.remove("active"));
+        document.querySelectorAll(".page").forEach(page => page.classList.remove("active"));
+
+        button.classList.add("active");
+        document.getElementById(button.dataset.page).classList.add("active");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
     });
 
     function getSelectedStrengths() {
@@ -963,7 +1069,6 @@
     form.addEventListener("submit", function(event) {
       event.preventDefault();
       generatePlan();
-      document.getElementById("roadmap-section").scrollIntoView({ behavior: "smooth" });
     });
 
     generatePlan();
