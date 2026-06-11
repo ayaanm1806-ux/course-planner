@@ -52,7 +52,7 @@
     }
 
     header p {
-      max-width: 760px;
+      max-width: 780px;
       margin: 14px auto 0;
       line-height: 1.7;
       color: #e8f6f4;
@@ -127,18 +127,13 @@
     }
 
     select,
-    input,
-    textarea {
+    input {
       padding: 13px;
       border: 1px solid #cbd5e1;
       border-radius: 10px;
       font-size: 1rem;
       font-family: Arial, sans-serif;
-    }
-
-    textarea {
-      min-height: 120px;
-      resize: vertical;
+      background: white;
     }
 
     .full {
@@ -223,37 +218,15 @@
       color: #102a43;
     }
 
-    .roadmap-box:nth-child(1) {
-      border-top: 6px solid #00897b;
-    }
-
-    .roadmap-box:nth-child(2) {
-      border-top: 6px solid #3b82f6;
-    }
-
-    .roadmap-box:nth-child(3) {
-      border-top: 6px solid #f59e0b;
-    }
-
-    .roadmap-box:nth-child(4) {
-      border-top: 6px solid #ef476f;
-    }
-
-    .roadmap-box:nth-child(5) {
-      border-top: 6px solid #7c3aed;
-    }
-
-    .roadmap-box:nth-child(6) {
-      border-top: 6px solid #14b8a6;
-    }
-
-    .roadmap-box:nth-child(7) {
-      border-top: 6px solid #111827;
-    }
-
-    .roadmap-box:nth-child(8) {
-      border-top: 6px solid #f97316;
-    }
+    .roadmap-box:nth-child(1) { border-top: 6px solid #00897b; }
+    .roadmap-box:nth-child(2) { border-top: 6px solid #3b82f6; }
+    .roadmap-box:nth-child(3) { border-top: 6px solid #f59e0b; }
+    .roadmap-box:nth-child(4) { border-top: 6px solid #ef476f; }
+    .roadmap-box:nth-child(5) { border-top: 6px solid #7c3aed; }
+    .roadmap-box:nth-child(6) { border-top: 6px solid #14b8a6; }
+    .roadmap-box:nth-child(7) { border-top: 6px solid #111827; }
+    .roadmap-box:nth-child(8) { border-top: 6px solid #f97316; }
+    .roadmap-box:nth-child(9) { border-top: 6px solid #0f766e; }
 
     .goal-box {
       background: #f8fafc;
@@ -262,6 +235,39 @@
       padding: 14px;
       margin-top: 12px;
       line-height: 1.6;
+    }
+
+    .internship-links {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .internship-link {
+      display: block;
+      border: 1px solid #d9e2ec;
+      border-radius: 12px;
+      padding: 14px;
+      text-decoration: none;
+      color: #102a43;
+      background: #fbfdff;
+    }
+
+    .internship-link:hover {
+      border-color: #00897b;
+      background: #f0fbf8;
+    }
+
+    .internship-link strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #007467;
+    }
+
+    .internship-link span {
+      color: #52616f;
+      line-height: 1.5;
     }
 
     .subscription {
@@ -386,8 +392,8 @@
     <h1>Student Pathway Planner</h1>
     <p>
       A smarter planning tool for students who want more than generic advice.
-      Get a personalized roadmap with AP classes, extracurriculars, internships,
-      and portfolio ideas based on your grade, strengths, and career interests.
+      Get a personalized roadmap with AP classes, extracurriculars, real internship examples,
+      college strategy, and portfolio ideas based on your grade, strengths, and career interests.
     </p>
   </header>
 
@@ -409,8 +415,8 @@
       </div>
 
       <div class="why-card">
-        <h3>Personalized Output</h3>
-        <p>The career goal and selected strengths directly change the roadmap students receive.</p>
+        <h3>Real Opportunities</h3>
+        <p>The roadmap includes examples of internships, programs, competitions, and opportunity links.</p>
       </div>
     </section>
 
@@ -441,9 +447,30 @@
             </select>
           </label>
 
-          <label class="full">
+          <label>
             Career Goal
-            <input id="goal" type="text" placeholder="Example: software engineer, doctor, founder, lawyer" />
+            <select id="goal">
+              <option value="Software Engineer">Software Engineer</option>
+              <option value="Doctor">Doctor</option>
+              <option value="Entrepreneur">Entrepreneur</option>
+              <option value="Engineer">Engineer</option>
+              <option value="Lawyer">Lawyer</option>
+              <option value="Policy Analyst">Policy Analyst</option>
+              <option value="Designer">Designer</option>
+              <option value="Marketing Manager">Marketing Manager</option>
+            </select>
+          </label>
+
+          <label>
+            Dream College
+            <select id="college">
+              <option value="stanford">Stanford University</option>
+              <option value="mit">MIT</option>
+              <option value="berkeley">UC Berkeley</option>
+              <option value="ucla">UCLA</option>
+              <option value="harvard">Harvard University</option>
+              <option value="usc">USC</option>
+            </select>
           </label>
 
           <div class="full">
@@ -528,7 +555,7 @@
   </main>
 
   <footer>
-    Use this as a starting point. Always confirm AP availability, prerequisites, and graduation requirements with your counselor.
+    Use this as a starting point. Always confirm AP availability, prerequisites, opportunity deadlines, and college admissions rules with official websites or your counselor.
   </footer>
 
   <script>
@@ -558,9 +585,26 @@
         ],
         internships: [
           "Local startup internship",
-          "IT assistant role",
+          "IT assistant role at a school or small business",
           "Web development summer program",
           "Tech support volunteer position"
+        ],
+        opportunities: [
+          {
+            title: "Girls Who Code Summer Programs",
+            url: "https://girlswhocode.com/programs/summer-immersion-program",
+            note: "Great for coding exposure, projects, and tech community."
+          },
+          {
+            title: "Kode With Klossy",
+            url: "https://www.kodewithklossy.com/",
+            note: "Free coding camps for students interested in web development, data, apps, and AI."
+          },
+          {
+            title: "Congressional App Challenge",
+            url: "https://www.congressionalappchallenge.us/",
+            note: "Build and submit an app to show initiative and technical creativity."
+          }
         ],
         project: "Build a small app, website, or game and publish it online."
       },
@@ -594,6 +638,23 @@
           "Public health summer program",
           "Lab shadowing opportunity"
         ],
+        opportunities: [
+          {
+            title: "NIH Summer Internship Program",
+            url: "https://www.training.nih.gov/research-training/pb/sip/",
+            note: "Research-focused opportunity for students interested in biomedical science."
+          },
+          {
+            title: "HOSA Competitive Events",
+            url: "https://hosa.org/guidelines/",
+            note: "Healthcare competitions that can show commitment to medicine and public health."
+          },
+          {
+            title: "Red Cross Volunteer Opportunities",
+            url: "https://www.redcross.org/volunteer/volunteer-opportunities.html",
+            note: "Good for service, health awareness, and community impact."
+          }
+        ],
         project: "Interview a healthcare worker and create a presentation about one medical career."
       },
 
@@ -625,6 +686,23 @@
           "Marketing assistant role",
           "Startup summer program",
           "Nonprofit fundraising internship"
+        ],
+        opportunities: [
+          {
+            title: "Bank of America Student Leaders",
+            url: "https://about.bankofamerica.com/en/making-an-impact/student-leaders",
+            note: "Leadership and paid nonprofit work experience for high school students."
+          },
+          {
+            title: "DECA Competitive Events",
+            url: "https://www.deca.org/high-school-programs/high-school-competitive-events/",
+            note: "Business competitions in marketing, finance, entrepreneurship, and management."
+          },
+          {
+            title: "Diamond Challenge",
+            url: "https://diamondchallenge.org/",
+            note: "Entrepreneurship competition for high school students."
+          }
         ],
         project: "Start a simple business idea and track customers, costs, revenue, and lessons learned."
       },
@@ -658,6 +736,23 @@
           "Architecture studio volunteer",
           "STEM research program"
         ],
+        opportunities: [
+          {
+            title: "NASA Internship Programs",
+            url: "https://www.nasa.gov/learning-resources/internship-programs/",
+            note: "Strong example for aerospace, engineering, robotics, and STEM pathways."
+          },
+          {
+            title: "FIRST Robotics",
+            url: "https://www.firstinspires.org/robotics/frc",
+            note: "Robotics experience that helps show teamwork, building, and engineering design."
+          },
+          {
+            title: "Science Olympiad",
+            url: "https://www.soinc.org/",
+            note: "Competition pathway for students interested in science and engineering."
+          }
+        ],
         project: "Design and test a prototype that solves a real problem."
       },
 
@@ -689,6 +784,23 @@
           "City office internship",
           "Legal aid volunteer",
           "Policy research program"
+        ],
+        opportunities: [
+          {
+            title: "YMCA Youth and Government",
+            url: "https://www.ymcayag.org/",
+            note: "Civic engagement and government simulation experience."
+          },
+          {
+            title: "Model United Nations",
+            url: "https://www.nmun.org/",
+            note: "Good for public speaking, policy, diplomacy, and global issues."
+          },
+          {
+            title: "Local Government Internship Search",
+            url: "https://www.usa.gov/local-governments",
+            note: "Use this to find city, county, and local public service offices near you."
+          }
         ],
         project: "Write a short policy proposal about an issue in your community."
       },
@@ -722,6 +834,23 @@
           "Museum volunteer",
           "Design agency shadowing"
         ],
+        opportunities: [
+          {
+            title: "Scholastic Art & Writing Awards",
+            url: "https://www.artandwriting.org/",
+            note: "Major national competition for art, design, writing, and creative work."
+          },
+          {
+            title: "YoungArts",
+            url: "https://youngarts.org/",
+            note: "Competitive arts program for strong creative students."
+          },
+          {
+            title: "The New York Times Student Contests",
+            url: "https://www.nytimes.com/spotlight/learning-contests",
+            note: "Good for writing, media, journalism, photography, and commentary."
+          }
+        ],
         project: "Create a polished portfolio with your best work and short descriptions."
       }
     };
@@ -749,23 +878,82 @@
       ]
     };
 
+    const careerMajorMap = {
+      "Software Engineer": "Computer Science, Data Science, Software Engineering, or Human-Computer Interaction",
+      "Doctor": "Biology, Chemistry, Neuroscience, Public Health, or a Pre-Med track",
+      "Entrepreneur": "Business, Economics, Innovation, Entrepreneurship, or Management",
+      "Engineer": "Mechanical Engineering, Electrical Engineering, Civil Engineering, Aerospace Engineering, or Bioengineering",
+      "Lawyer": "Political Science, Public Policy, History, English, Philosophy, or Legal Studies",
+      "Policy Analyst": "Public Policy, Political Science, Economics, International Relations, or Statistics",
+      "Designer": "Design, Media Arts, Architecture, Human-Computer Interaction, or Fine Arts",
+      "Marketing Manager": "Business, Marketing, Communications, Psychology, or Economics"
+    };
+
+    const collegeData = {
+      stanford: {
+        name: "Stanford University",
+        admitStyle: [
+          "Stanford uses a highly holistic review process with academics, essays, recommendations, activities, and personal qualities all mattering.",
+          "Your intended major should feel connected to your activities, projects, essays, and intellectual curiosity.",
+          "For competitive interests, show depth: research, leadership, original projects, or meaningful community impact."
+        ],
+        majorAdvice: "Build a story around curiosity, initiative, and real-world impact connected to your intended major."
+      },
+      mit: {
+        name: "MIT",
+        admitStyle: [
+          "MIT reviews applications holistically and places major value on problem-solving, collaboration, creativity, and academic preparation.",
+          "STEM-heavy applicants should show strong math, science, building, coding, research, or competition experience.",
+          "MIT does not just want perfect grades; it wants students who make things, solve problems, and contribute to others."
+        ],
+        majorAdvice: "Show proof that you can solve hard problems through projects, research, engineering builds, competitions, or advanced STEM classes."
+      },
+      berkeley: {
+        name: "UC Berkeley",
+        admitStyle: [
+          "UC Berkeley considers academic preparation, activities, essays, context, and the major or college selected.",
+          "Some paths, such as engineering, computer science, and business, can be especially competitive.",
+          "Your application should connect your course choices, activities, and essays to your selected academic direction."
+        ],
+        majorAdvice: "Choose your major carefully and show readiness through AP classes, strong grades, leadership, and major-related activities."
+      },
+      ucla: {
+        name: "UCLA",
+        admitStyle: [
+          "UCLA reviews academic achievement, activities, leadership, essays, and the context of your opportunities.",
+          "Some schools and majors, including engineering, arts, film, and other specialized programs, may require stronger major-specific preparation.",
+          "Creative or specialized applicants may need portfolios, auditions, or proof of serious preparation."
+        ],
+        majorAdvice: "Show both academic strength and a clear pattern of commitment to your field through activities, projects, and impact."
+      },
+      harvard: {
+        name: "Harvard University",
+        admitStyle: [
+          "Harvard uses holistic admissions and does not require every student to have a fixed career plan.",
+          "Academic excellence, meaningful extracurricular impact, strong writing, and personal character matter.",
+          "Instead of only naming a major, show why you are curious about that field and what impact you want to make."
+        ],
+        majorAdvice: "Focus on depth, leadership, originality, and a clear personal story connected to your academic interests."
+      },
+      usc: {
+        name: "USC",
+        admitStyle: [
+          "USC considers academics, essays, activities, leadership, and fit with the school or major.",
+          "Some programs, such as film, business, architecture, arts, and engineering, can need stronger major-specific preparation.",
+          "Students should show why USC and the chosen program match their goals."
+        ],
+        majorAdvice: "Connect your major interest to projects, leadership, creative work, internships, and a clear reason for choosing USC."
+      }
+    };
+
     const form = document.getElementById("plannerForm");
     const profile = document.getElementById("profile");
     const roadmap = document.getElementById("roadmap");
 
     function getGoalAdvice(goal, trackName) {
-      const cleanGoal = goal.trim();
-
-      if (!cleanGoal) {
-        return [
-          "Choose a possible career goal so your roadmap can become more specific.",
-          "Talk to a counselor, teacher, or mentor about careers related to " + trackName + "."
-        ];
-      }
-
       return [
-        "Because your goal is " + cleanGoal + ", look for classes and activities that directly prove interest in that path.",
-        "Create a resume section called '" + cleanGoal + " Preparation' and add related projects, clubs, service, and internships.",
+        "Because your goal is " + goal + ", look for classes and activities that directly prove interest in that path.",
+        "Create a resume section called '" + goal + " Preparation' and add related projects, clubs, service, and internships.",
         "Find one professional with this career and ask for an informational interview or job shadowing opportunity."
       ];
     }
@@ -804,10 +992,23 @@
       return advice;
     }
 
+    function makeOpportunityLinks(opportunities) {
+      return opportunities.map(item => `
+        <a class="internship-link" href="${item.url}" target="_blank">
+          <strong>${item.title}</strong>
+          <span>${item.note}</span>
+        </a>
+      `).join("");
+    }
+
     function generatePlan() {
       const grade = document.getElementById("grade").value;
       const interest = document.getElementById("interest").value;
-      const goal = document.getElementById("goal").value || "";
+      const goal = document.getElementById("goal").value;
+      const collegeKey = document.getElementById("college").value;
+      const college = collegeData[collegeKey];
+      const recommendedMajor = careerMajorMap[goal];
+
       const selected = [...document.querySelectorAll("input[type='checkbox']:checked")]
         .map(box => box.value);
 
@@ -818,7 +1019,9 @@
       profile.innerHTML = `
         <p><strong>Grade:</strong> ${grade}th Grade</p>
         <p><strong>Interest:</strong> ${track.name}</p>
-        <p><strong>Career Goal:</strong> ${goal || "Not specified yet"}</p>
+        <p><strong>Career Goal:</strong> ${goal}</p>
+        <p><strong>Dream College:</strong> ${college.name}</p>
+        <p><strong>Recommended Major Path:</strong> ${recommendedMajor}</p>
         <p><strong>Strengths:</strong></p>
         ${selected.map(item => `<span class="badge">${item}</span>`).join("")}
       `;
@@ -850,22 +1053,34 @@
             <ul>${goalAdvice.map(item => `<li>${item}</li>`).join("")}</ul>
             <div class="goal-box">
               Your roadmap is being customized around:
-              <strong>${goal || "a future career goal"}</strong>
+              <strong>${goal}</strong>
             </div>
           </div>
 
           <div class="roadmap-box">
-            <h3>6. Strength-Based Strategy</h3>
+            <h3>6. Dream College Strategy</h3>
+            <p><strong>Recommended major path:</strong> ${recommendedMajor}</p>
+            <ul>${college.admitStyle.map(item => `<li>${item}</li>`).join("")}</ul>
+            <div class="goal-box">
+              <strong>${college.name} strategy:</strong> ${college.majorAdvice}
+            </div>
+          </div>
+
+          <div class="roadmap-box">
+            <h3>7. Strength-Based Strategy</h3>
             <ul>${strengthAdvice.map(item => `<li>${item}</li>`).join("")}</ul>
           </div>
 
           <div class="roadmap-box">
-            <h3>7. Internship Ideas</h3>
+            <h3>8. Internship Ideas and Real Examples</h3>
             <ul>${track.internships.map(item => `<li>${item}</li>`).join("")}</ul>
+            <div class="internship-links">
+              ${makeOpportunityLinks(track.opportunities)}
+            </div>
           </div>
 
           <div class="roadmap-box">
-            <h3>8. Portfolio Project</h3>
+            <h3>9. Portfolio Project</h3>
             <ul><li>${track.project}</li></ul>
           </div>
         </div>
@@ -875,6 +1090,7 @@
     form.addEventListener("submit", function(event) {
       event.preventDefault();
       generatePlan();
+      document.getElementById("roadmap-section").scrollIntoView({ behavior: "smooth" });
     });
 
     generatePlan();
