@@ -17,13 +17,6 @@
       color: #182230;
     }
 
-    header {
-      background: linear-gradient(135deg, #102a43, #00897b);
-      color: white;
-      padding: 50px 20px;
-      text-align: center;
-    }
-
     nav {
       background: #ffffff;
       border-bottom: 1px solid #d9e2ec;
@@ -34,6 +27,7 @@
       position: sticky;
       top: 0;
       z-index: 10;
+      flex-wrap: wrap;
     }
 
     nav a {
@@ -46,13 +40,20 @@
       color: #00897b;
     }
 
+    header {
+      background: linear-gradient(135deg, #102a43, #00897b);
+      color: white;
+      padding: 54px 20px;
+      text-align: center;
+    }
+
     header h1 {
       margin: 0;
       font-size: 2.8rem;
     }
 
     header p {
-      max-width: 780px;
+      max-width: 840px;
       margin: 14px auto 0;
       line-height: 1.7;
       color: #e8f6f4;
@@ -60,7 +61,7 @@
     }
 
     main {
-      max-width: 1120px;
+      max-width: 1150px;
       margin: 32px auto;
       padding: 0 20px;
       display: grid;
@@ -142,7 +143,7 @@
 
     .checkboxes {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 10px;
       margin-top: 8px;
     }
@@ -239,7 +240,6 @@
 
     .internship-links {
       display: grid;
-      grid-template-columns: 1fr;
       gap: 12px;
       margin-top: 12px;
     }
@@ -268,6 +268,52 @@
     .internship-link span {
       color: #52616f;
       line-height: 1.5;
+    }
+
+    .section-note {
+      color: #52616f;
+      line-height: 1.6;
+      margin-top: -6px;
+    }
+
+    .ranking-grid {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .rank-card {
+      border: 1px solid #d9e2ec;
+      border-radius: 14px;
+      padding: 18px;
+      background: #ffffff;
+      box-shadow: 0 10px 24px rgba(16, 42, 67, 0.08);
+    }
+
+    .rank-card:nth-child(1) { border-left: 7px solid #00897b; }
+    .rank-card:nth-child(2) { border-left: 7px solid #3b82f6; }
+    .rank-card:nth-child(3) { border-left: 7px solid #f59e0b; }
+    .rank-card:nth-child(4) { border-left: 7px solid #ef476f; }
+
+    .rank-label {
+      display: inline-block;
+      background: #e6f4f1;
+      color: #007467;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.8rem;
+      margin-bottom: 8px;
+    }
+
+    .premium-lock {
+      background: #fff7e6;
+      border: 1px solid #facc15;
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 16px;
+      color: #713f12;
+      line-height: 1.6;
     }
 
     .subscription {
@@ -373,10 +419,6 @@
       header h1 {
         font-size: 2.2rem;
       }
-
-      nav {
-        flex-wrap: wrap;
-      }
     }
   </style>
 </head>
@@ -385,6 +427,7 @@
   <nav>
     <a href="#planner">Planner</a>
     <a href="#roadmap-section">Roadmap</a>
+    <a href="#ec-ranker">EC Ranker</a>
     <a href="#premium">Premium</a>
   </nav>
 
@@ -410,8 +453,8 @@
       </div>
 
       <div class="why-card">
-        <h3>Real AP Classes</h3>
-        <p>Students get specific AP course suggestions connected to their career interest.</p>
+        <h3>Top College Strategy</h3>
+        <p>Students can choose from 50 selective colleges and get major-focused application guidance.</p>
       </div>
 
       <div class="why-card">
@@ -444,6 +487,10 @@
               <option value="engineering">Engineering / Architecture</option>
               <option value="law">Law / Public Policy</option>
               <option value="arts">Arts / Design / Media</option>
+              <option value="finance">Finance / Investing</option>
+              <option value="education">Education / Social Impact</option>
+              <option value="environment">Environment / Sustainability</option>
+              <option value="psychology">Psychology / Human Behavior</option>
             </select>
           </label>
 
@@ -458,18 +505,68 @@
               <option value="Policy Analyst">Policy Analyst</option>
               <option value="Designer">Designer</option>
               <option value="Marketing Manager">Marketing Manager</option>
+              <option value="Investment Banker">Investment Banker</option>
+              <option value="Product Manager">Product Manager</option>
+              <option value="Teacher">Teacher</option>
+              <option value="Psychologist">Psychologist</option>
+              <option value="Environmental Scientist">Environmental Scientist</option>
+              <option value="Data Scientist">Data Scientist</option>
             </select>
           </label>
 
           <label>
             Dream College
             <select id="college">
-              <option value="stanford">Stanford University</option>
+              <option value="princeton">Princeton University</option>
               <option value="mit">MIT</option>
+              <option value="harvard">Harvard University</option>
+              <option value="stanford">Stanford University</option>
+              <option value="yale">Yale University</option>
+              <option value="penn">University of Pennsylvania</option>
+              <option value="caltech">Caltech</option>
+              <option value="duke">Duke University</option>
+              <option value="brown">Brown University</option>
+              <option value="johnshopkins">Johns Hopkins University</option>
+              <option value="northwestern">Northwestern University</option>
+              <option value="columbia">Columbia University</option>
+              <option value="cornell">Cornell University</option>
+              <option value="uchicago">University of Chicago</option>
               <option value="berkeley">UC Berkeley</option>
               <option value="ucla">UCLA</option>
-              <option value="harvard">Harvard University</option>
+              <option value="rice">Rice University</option>
+              <option value="vanderbilt">Vanderbilt University</option>
+              <option value="notredame">University of Notre Dame</option>
+              <option value="umich">University of Michigan</option>
+              <option value="georgetown">Georgetown University</option>
+              <option value="unc">UNC Chapel Hill</option>
+              <option value="cmu">Carnegie Mellon University</option>
+              <option value="emory">Emory University</option>
+              <option value="uva">University of Virginia</option>
               <option value="usc">USC</option>
+              <option value="nyu">NYU</option>
+              <option value="washu">Washington University in St. Louis</option>
+              <option value="ucsd">UC San Diego</option>
+              <option value="uflorida">University of Florida</option>
+              <option value="utexas">University of Texas at Austin</option>
+              <option value="gatech">Georgia Tech</option>
+              <option value="ucdavis">UC Davis</option>
+              <option value="uci">UC Irvine</option>
+              <option value="illinois">University of Illinois Urbana-Champaign</option>
+              <option value="wisco">University of Wisconsin-Madison</option>
+              <option value="bu">Boston University</option>
+              <option value="bc">Boston College</option>
+              <option value="tufts">Tufts University</option>
+              <option value="purdue">Purdue University</option>
+              <option value="osu">Ohio State University</option>
+              <option value="rutgers">Rutgers University</option>
+              <option value="umd">University of Maryland</option>
+              <option value="uwash">University of Washington</option>
+              <option value="wakeforest">Wake Forest University</option>
+              <option value="lehigh">Lehigh University</option>
+              <option value="northeastern">Northeastern University</option>
+              <option value="casewestern">Case Western Reserve University</option>
+              <option value="tulane">Tulane University</option>
+              <option value="rochester">University of Rochester</option>
             </select>
           </label>
 
@@ -482,6 +579,10 @@
               <label><input type="checkbox" value="Research" /> Research</label>
               <label><input type="checkbox" value="Design" /> Design</label>
               <label><input type="checkbox" value="Community Service" /> Service</label>
+              <label><input type="checkbox" value="Public Speaking" /> Speaking</label>
+              <label><input type="checkbox" value="Creativity" /> Creativity</label>
+              <label><input type="checkbox" value="Teamwork" /> Teamwork</label>
+              <label><input type="checkbox" value="Problem Solving" /> Problem Solving</label>
             </div>
           </div>
         </div>
@@ -500,6 +601,15 @@
         <h2>Recommended Roadmap</h2>
         <div id="roadmap"></div>
       </div>
+    </section>
+
+    <section class="card" id="ec-ranker">
+      <h2>Extracurricular Ranking</h2>
+      <p class="section-note">
+        Free version gives a broad ranking of your recommended activities. Premium unlocks detailed scoring,
+        essay positioning, uniqueness rating, and improvement steps.
+      </p>
+      <div id="ranking"></div>
     </section>
 
     <section class="subscription" id="premium">
@@ -530,352 +640,173 @@
     <section class="ai-tools">
       <div class="tool-card">
         <h3>Essay Grader</h3>
-        <p>
-          Upload or paste an essay and receive feedback on clarity, structure,
-          voice, grammar, and how well it answers the prompt.
-        </p>
+        <p>Upload or paste an essay and receive feedback on clarity, structure, voice, grammar, and how well it answers the prompt.</p>
       </div>
 
       <div class="tool-card">
         <h3>Extracurricular Review</h3>
-        <p>
-          Get a score for leadership, impact, consistency, uniqueness, and connection
-          to your intended major or career path.
-        </p>
+        <p>Get a score for leadership, impact, consistency, uniqueness, and connection to your intended major or career path.</p>
       </div>
 
       <div class="tool-card">
         <h3>Niche Opportunities</h3>
-        <p>
-          Discover lesser-known internships, competitions, summer programs,
-          scholarships, and volunteer options based on your interests.
-        </p>
+        <p>Discover lesser-known internships, competitions, summer programs, scholarships, and volunteer options based on your interests.</p>
       </div>
     </section>
   </main>
 
   <footer>
-    Use this as a starting point. Always confirm AP availability, prerequisites, opportunity deadlines, and college admissions rules with official websites or your counselor.
+    Use this as a starting point. Always confirm AP availability, opportunity deadlines, and college admissions rules with official websites or your counselor.
   </footer>
 
   <script>
     const data = {
       technology: {
         name: "Technology / Computer Science",
-        classes: [
-          "AP Computer Science Principles",
-          "AP Computer Science A",
-          "AP Calculus AB or BC",
-          "AP Statistics",
-          "AP Physics 1"
-        ],
-        activities: [
-          "Coding club",
-          "Robotics team",
-          "Hackathons",
-          "Cybersecurity club",
-          "Personal website or app portfolio"
-        ],
-        extras: [
-          "Become a coding club officer",
-          "Lead a hackathon team",
-          "Teach younger students basic coding",
-          "Enter a cybersecurity competition",
-          "Contribute to an open-source project"
-        ],
-        internships: [
-          "Local startup internship",
-          "IT assistant role at a school or small business",
-          "Web development summer program",
-          "Tech support volunteer position"
-        ],
+        classes: ["AP Computer Science Principles", "AP Computer Science A", "AP Calculus AB or BC", "AP Statistics", "AP Physics 1"],
+        activities: ["Coding club", "Robotics team", "Hackathons", "Cybersecurity club", "Personal website or app portfolio"],
+        extras: ["Become a coding club officer", "Lead a hackathon team", "Teach younger students basic coding", "Enter a cybersecurity competition", "Contribute to an open-source project"],
+        internships: ["Local startup internship", "IT assistant role at a school or small business", "Web development summer program", "Tech support volunteer position"],
         opportunities: [
-          {
-            title: "Girls Who Code Summer Programs",
-            url: "https://girlswhocode.com/programs/summer-immersion-program",
-            note: "Great for coding exposure, projects, and tech community."
-          },
-          {
-            title: "Kode With Klossy",
-            url: "https://www.kodewithklossy.com/",
-            note: "Free coding camps for students interested in web development, data, apps, and AI."
-          },
-          {
-            title: "Congressional App Challenge",
-            url: "https://www.congressionalappchallenge.us/",
-            note: "Build and submit an app to show initiative and technical creativity."
-          }
+          { title: "Girls Who Code Summer Programs", url: "https://girlswhocode.com/programs/summer-immersion-program", note: "Coding exposure, projects, and tech community." },
+          { title: "Kode With Klossy", url: "https://www.kodewithklossy.com/", note: "Free coding camps for students interested in web development, data, apps, and AI." },
+          { title: "Congressional App Challenge", url: "https://www.congressionalappchallenge.us/", note: "Build and submit an app to show initiative and technical creativity." }
         ],
         project: "Build a small app, website, or game and publish it online."
       },
 
       medicine: {
         name: "Medicine / Health Science",
-        classes: [
-          "AP Biology",
-          "AP Chemistry",
-          "AP Psychology",
-          "AP Statistics",
-          "AP Environmental Science"
-        ],
-        activities: [
-          "HOSA",
-          "Hospital volunteering",
-          "Red Cross club",
-          "Science fair",
-          "Health awareness club"
-        ],
-        extras: [
-          "Earn CPR or first aid certification",
-          "Lead a health awareness campaign",
-          "Volunteer at a hospital or clinic",
-          "Do science fair research",
-          "Shadow a healthcare professional"
-        ],
-        internships: [
-          "Clinic volunteer role",
-          "Medical office assistant",
-          "Public health summer program",
-          "Lab shadowing opportunity"
-        ],
+        classes: ["AP Biology", "AP Chemistry", "AP Psychology", "AP Statistics", "AP Environmental Science"],
+        activities: ["HOSA", "Hospital volunteering", "Red Cross club", "Science fair", "Health awareness club"],
+        extras: ["Earn CPR or first aid certification", "Lead a health awareness campaign", "Volunteer at a hospital or clinic", "Do science fair research", "Shadow a healthcare professional"],
+        internships: ["Clinic volunteer role", "Medical office assistant", "Public health summer program", "Lab shadowing opportunity"],
         opportunities: [
-          {
-            title: "NIH Summer Internship Program",
-            url: "https://www.training.nih.gov/research-training/pb/sip/",
-            note: "Research-focused opportunity for students interested in biomedical science."
-          },
-          {
-            title: "HOSA Competitive Events",
-            url: "https://hosa.org/guidelines/",
-            note: "Healthcare competitions that can show commitment to medicine and public health."
-          },
-          {
-            title: "Red Cross Volunteer Opportunities",
-            url: "https://www.redcross.org/volunteer/volunteer-opportunities.html",
-            note: "Good for service, health awareness, and community impact."
-          }
+          { title: "NIH Summer Internship Program", url: "https://www.training.nih.gov/research-training/pb/sip/", note: "Research-focused opportunity for biomedical science." },
+          { title: "HOSA Competitive Events", url: "https://hosa.org/guidelines/", note: "Healthcare competitions that show commitment to medicine and public health." },
+          { title: "Red Cross Volunteer Opportunities", url: "https://www.redcross.org/volunteer/volunteer-opportunities.html", note: "Good for service, health awareness, and community impact." }
         ],
         project: "Interview a healthcare worker and create a presentation about one medical career."
       },
 
       business: {
         name: "Business / Entrepreneurship",
-        classes: [
-          "AP Microeconomics",
-          "AP Macroeconomics",
-          "AP Statistics",
-          "AP Calculus AB",
-          "AP Psychology"
-        ],
-        activities: [
-          "DECA",
-          "FBLA",
-          "Student government",
-          "School store",
-          "Entrepreneurship club"
-        ],
-        extras: [
-          "Compete in DECA",
-          "Run for FBLA officer",
-          "Manage a school store project",
-          "Start a small business",
-          "Lead a fundraising campaign"
-        ],
-        internships: [
-          "Small business internship",
-          "Marketing assistant role",
-          "Startup summer program",
-          "Nonprofit fundraising internship"
-        ],
+        classes: ["AP Microeconomics", "AP Macroeconomics", "AP Statistics", "AP Calculus AB", "AP Psychology"],
+        activities: ["DECA", "FBLA", "Student government", "School store", "Entrepreneurship club"],
+        extras: ["Compete in DECA", "Run for FBLA officer", "Manage a school store project", "Start a small business", "Lead a fundraising campaign"],
+        internships: ["Small business internship", "Marketing assistant role", "Startup summer program", "Nonprofit fundraising internship"],
         opportunities: [
-          {
-            title: "Bank of America Student Leaders",
-            url: "https://about.bankofamerica.com/en/making-an-impact/student-leaders",
-            note: "Leadership and paid nonprofit work experience for high school students."
-          },
-          {
-            title: "DECA Competitive Events",
-            url: "https://www.deca.org/high-school-programs/high-school-competitive-events/",
-            note: "Business competitions in marketing, finance, entrepreneurship, and management."
-          },
-          {
-            title: "Diamond Challenge",
-            url: "https://diamondchallenge.org/",
-            note: "Entrepreneurship competition for high school students."
-          }
+          { title: "Bank of America Student Leaders", url: "https://about.bankofamerica.com/en/making-an-impact/student-leaders", note: "Leadership and paid nonprofit work experience for high school students." },
+          { title: "DECA Competitive Events", url: "https://www.deca.org/high-school-programs/high-school-competitive-events/", note: "Business competitions in marketing, finance, entrepreneurship, and management." },
+          { title: "Diamond Challenge", url: "https://diamondchallenge.org/", note: "Entrepreneurship competition for high school students." }
         ],
         project: "Start a simple business idea and track customers, costs, revenue, and lessons learned."
       },
 
       engineering: {
         name: "Engineering / Architecture",
-        classes: [
-          "AP Physics 1",
-          "AP Physics C: Mechanics",
-          "AP Calculus AB or BC",
-          "AP Computer Science Principles",
-          "AP Statistics"
-        ],
-        activities: [
-          "Robotics",
-          "Science Olympiad",
-          "Math team",
-          "Maker club",
-          "Architecture club"
-        ],
-        extras: [
-          "Compete in robotics",
-          "Create a CAD design portfolio",
-          "Join Science Olympiad",
-          "Build a prototype",
-          "Lead a maker space project"
-        ],
-        internships: [
-          "Engineering firm shadowing",
-          "Maker space assistant",
-          "Architecture studio volunteer",
-          "STEM research program"
-        ],
+        classes: ["AP Physics 1", "AP Physics C: Mechanics", "AP Calculus AB or BC", "AP Computer Science Principles", "AP Statistics"],
+        activities: ["Robotics", "Science Olympiad", "Math team", "Maker club", "Architecture club"],
+        extras: ["Compete in robotics", "Create a CAD design portfolio", "Join Science Olympiad", "Build a prototype", "Lead a maker space project"],
+        internships: ["Engineering firm shadowing", "Maker space assistant", "Architecture studio volunteer", "STEM research program"],
         opportunities: [
-          {
-            title: "NASA Internship Programs",
-            url: "https://www.nasa.gov/learning-resources/internship-programs/",
-            note: "Strong example for aerospace, engineering, robotics, and STEM pathways."
-          },
-          {
-            title: "FIRST Robotics",
-            url: "https://www.firstinspires.org/robotics/frc",
-            note: "Robotics experience that helps show teamwork, building, and engineering design."
-          },
-          {
-            title: "Science Olympiad",
-            url: "https://www.soinc.org/",
-            note: "Competition pathway for students interested in science and engineering."
-          }
+          { title: "NASA Internship Programs", url: "https://www.nasa.gov/learning-resources/internship-programs/", note: "Strong example for aerospace, engineering, robotics, and STEM pathways." },
+          { title: "FIRST Robotics", url: "https://www.firstinspires.org/robotics/frc", note: "Robotics experience that shows teamwork, building, and engineering design." },
+          { title: "Science Olympiad", url: "https://www.soinc.org/", note: "Competition pathway for students interested in science and engineering." }
         ],
         project: "Design and test a prototype that solves a real problem."
       },
 
       law: {
         name: "Law / Public Policy",
-        classes: [
-          "AP U.S. Government and Politics",
-          "AP Comparative Government and Politics",
-          "AP United States History",
-          "AP English Language and Composition",
-          "AP Statistics"
-        ],
-        activities: [
-          "Mock trial",
-          "Debate team",
-          "Model UN",
-          "Student government",
-          "School newspaper"
-        ],
-        extras: [
-          "Compete in mock trial",
-          "Join debate team",
-          "Run for student government",
-          "Write opinion articles",
-          "Create a community policy project"
-        ],
-        internships: [
-          "Campaign volunteer role",
-          "City office internship",
-          "Legal aid volunteer",
-          "Policy research program"
-        ],
+        classes: ["AP U.S. Government and Politics", "AP Comparative Government and Politics", "AP United States History", "AP English Language and Composition", "AP Statistics"],
+        activities: ["Mock trial", "Debate team", "Model UN", "Student government", "School newspaper"],
+        extras: ["Compete in mock trial", "Join debate team", "Run for student government", "Write opinion articles", "Create a community policy project"],
+        internships: ["Campaign volunteer role", "City office internship", "Legal aid volunteer", "Policy research program"],
         opportunities: [
-          {
-            title: "YMCA Youth and Government",
-            url: "https://www.ymcayag.org/",
-            note: "Civic engagement and government simulation experience."
-          },
-          {
-            title: "Model United Nations",
-            url: "https://www.nmun.org/",
-            note: "Good for public speaking, policy, diplomacy, and global issues."
-          },
-          {
-            title: "Local Government Internship Search",
-            url: "https://www.usa.gov/local-governments",
-            note: "Use this to find city, county, and local public service offices near you."
-          }
+          { title: "YMCA Youth and Government", url: "https://www.ymcayag.org/", note: "Civic engagement and government simulation experience." },
+          { title: "Model United Nations", url: "https://www.nmun.org/", note: "Good for public speaking, policy, diplomacy, and global issues." },
+          { title: "Local Government Search", url: "https://www.usa.gov/local-governments", note: "Find city, county, and public service offices near you." }
         ],
         project: "Write a short policy proposal about an issue in your community."
       },
 
       arts: {
         name: "Arts / Design / Media",
-        classes: [
-          "AP 2-D Art and Design",
-          "AP Drawing",
-          "AP Art History",
-          "AP English Language and Composition",
-          "AP Psychology"
-        ],
-        activities: [
-          "Yearbook",
-          "School newspaper",
-          "Theater",
-          "Design club",
-          "Film or media club"
-        ],
-        extras: [
-          "Build a portfolio showcase",
-          "Join the yearbook design team",
-          "Enter an art competition",
-          "Create freelance design work",
-          "Produce a short film or media project"
-        ],
-        internships: [
-          "Studio assistant",
-          "Social media intern",
-          "Museum volunteer",
-          "Design agency shadowing"
-        ],
+        classes: ["AP 2-D Art and Design", "AP Drawing", "AP Art History", "AP English Language and Composition", "AP Psychology"],
+        activities: ["Yearbook", "School newspaper", "Theater", "Design club", "Film or media club"],
+        extras: ["Build a portfolio showcase", "Join the yearbook design team", "Enter an art competition", "Create freelance design work", "Produce a short film or media project"],
+        internships: ["Studio assistant", "Social media intern", "Museum volunteer", "Design agency shadowing"],
         opportunities: [
-          {
-            title: "Scholastic Art & Writing Awards",
-            url: "https://www.artandwriting.org/",
-            note: "Major national competition for art, design, writing, and creative work."
-          },
-          {
-            title: "YoungArts",
-            url: "https://youngarts.org/",
-            note: "Competitive arts program for strong creative students."
-          },
-          {
-            title: "The New York Times Student Contests",
-            url: "https://www.nytimes.com/spotlight/learning-contests",
-            note: "Good for writing, media, journalism, photography, and commentary."
-          }
+          { title: "Scholastic Art & Writing Awards", url: "https://www.artandwriting.org/", note: "Major national competition for art, design, writing, and creative work." },
+          { title: "YoungArts", url: "https://youngarts.org/", note: "Competitive arts program for strong creative students." },
+          { title: "NYT Student Contests", url: "https://www.nytimes.com/spotlight/learning-contests", note: "Good for writing, media, journalism, photography, and commentary." }
         ],
         project: "Create a polished portfolio with your best work and short descriptions."
+      },
+
+      finance: {
+        name: "Finance / Investing",
+        classes: ["AP Microeconomics", "AP Macroeconomics", "AP Statistics", "AP Calculus AB", "AP Computer Science Principles"],
+        activities: ["Investment club", "DECA finance events", "FBLA", "Economics club", "School store finance team"],
+        extras: ["Start a mock investment portfolio", "Compete in finance events", "Create a personal finance workshop", "Manage fundraising for a club", "Write market analysis articles"],
+        internships: ["Local accounting office assistant", "Credit union volunteer", "Small business finance helper", "Nonprofit fundraising intern"],
+        opportunities: [
+          { title: "Wharton Global High School Investment Competition", url: "https://globalyouth.wharton.upenn.edu/investment-competition/", note: "Great for finance, investing, economics, and teamwork." },
+          { title: "DECA Finance Events", url: "https://www.deca.org/high-school-programs/high-school-competitive-events/", note: "Business and finance competitions that help build a stronger profile." },
+          { title: "Bank of America Student Leaders", url: "https://about.bankofamerica.com/en/making-an-impact/student-leaders", note: "Leadership and nonprofit experience with business relevance." }
+        ],
+        project: "Create a mock investment portfolio and explain your strategy, risks, and results."
+      },
+
+      education: {
+        name: "Education / Social Impact",
+        classes: ["AP Psychology", "AP English Language and Composition", "AP Statistics", "AP U.S. Government and Politics", "AP Seminar"],
+        activities: ["Peer tutoring", "Mentoring club", "Community service board", "School ambassador program", "Youth leadership program"],
+        extras: ["Start a tutoring program", "Mentor younger students", "Create study guides for classmates", "Volunteer at a library", "Lead an education equity project"],
+        internships: ["Camp counselor role", "After-school program assistant", "Library youth volunteer", "Nonprofit education intern"],
+        opportunities: [
+          { title: "VolunteerMatch", url: "https://www.volunteermatch.org/", note: "Search for tutoring, mentoring, and youth education service opportunities." },
+          { title: "Boys & Girls Clubs Volunteer", url: "https://www.bgca.org/get-involved/volunteer/", note: "Youth mentorship and education-related volunteer experience." },
+          { title: "Local Library Search", url: "https://www.usa.gov/libraries", note: "Find libraries that may offer tutoring, reading, or youth programming roles." }
+        ],
+        project: "Create a tutoring program or learning resource that helps younger students improve."
+      },
+
+      environment: {
+        name: "Environment / Sustainability",
+        classes: ["AP Environmental Science", "AP Biology", "AP Chemistry", "AP Statistics", "AP Human Geography"],
+        activities: ["Environmental club", "Gardening club", "Recycling initiative", "Climate advocacy group", "Science fair"],
+        extras: ["Lead a school recycling campaign", "Run a local cleanup event", "Start a composting project", "Research local water or air quality", "Build a sustainability awareness campaign"],
+        internships: ["Parks department volunteer", "Environmental nonprofit intern", "Community garden assistant", "Sustainability research volunteer"],
+        opportunities: [
+          { title: "NOAA Student Opportunities", url: "https://www.noaa.gov/education/opportunities/students", note: "Science and environmental opportunities for students." },
+          { title: "The Nature Conservancy Volunteer", url: "https://www.nature.org/en-us/get-involved/how-to-help/volunteer/", note: "Environmental volunteer opportunities and conservation work." },
+          { title: "EarthEcho Water Challenge", url: "https://www.monitorwater.org/", note: "Great for water quality and environmental science." }
+        ],
+        project: "Create a sustainability project with measurable impact at your school or in your community."
+      },
+
+      psychology: {
+        name: "Psychology / Human Behavior",
+        classes: ["AP Psychology", "AP Statistics", "AP Biology", "AP English Language and Composition", "AP Seminar"],
+        activities: ["Peer counseling club", "Mental health awareness club", "Psychology club", "Research club", "Community service group"],
+        extras: ["Lead a mental health awareness campaign", "Create a student wellness survey", "Volunteer with youth programs", "Write psychology research summaries", "Organize a stress management workshop"],
+        internships: ["Youth nonprofit volunteer", "Mental health awareness nonprofit assistant", "Research assistant shadowing", "Community center volunteer"],
+        opportunities: [
+          { title: "NAMI Youth Resources", url: "https://www.nami.org/Your-Journey/Kids-Teens-and-Young-Adults/", note: "Good starting point for mental health education and advocacy." },
+          { title: "Crisis Text Line Volunteer", url: "https://www.crisistextline.org/become-a-volunteer/", note: "Service opportunity for older students interested in mental health support." },
+          { title: "APA Psychology Science Fairs", url: "https://www.apa.org/education-career/k12/science-fairs", note: "Ideas for psychology-related research and science fair projects." }
+        ],
+        project: "Design a student wellness project using surveys, research, and practical recommendations."
       }
     };
 
     const gradeAdvice = {
-      9: [
-        "Explore electives and learn what subjects you enjoy most.",
-        "Join one or two clubs connected to your interest.",
-        "Start tracking awards, service hours, projects, and activities."
-      ],
-      10: [
-        "Take stronger classes if you are ready for the challenge.",
-        "Look for summer programs, volunteering, or beginner internships.",
-        "Start building a resume and portfolio."
-      ],
-      11: [
-        "Prioritize AP classes and advanced electives connected to your goal.",
-        "Apply for internships, mentorships, and selective summer programs.",
-        "Complete one strong project that proves your interest."
-      ],
-      12: [
-        "Keep your schedule rigorous while balancing applications.",
-        "Use your strongest activities in essays, interviews, and resumes.",
-        "Apply for scholarships, internships, and first-year college programs."
-      ]
+      9: ["Explore electives and learn what subjects you enjoy most.", "Join one or two clubs connected to your interest.", "Start tracking awards, service hours, projects, and activities."],
+      10: ["Take stronger classes if you are ready for the challenge.", "Look for summer programs, volunteering, or beginner internships.", "Start building a resume and portfolio."],
+      11: ["Prioritize AP classes and advanced electives connected to your goal.", "Apply for internships, mentorships, and selective summer programs.", "Complete one strong project that proves your interest."],
+      12: ["Keep your schedule rigorous while balancing applications.", "Use your strongest activities in essays, interviews, and resumes.", "Apply for scholarships, internships, and first-year college programs."]
     };
 
     const careerMajorMap = {
@@ -886,71 +817,151 @@
       "Lawyer": "Political Science, Public Policy, History, English, Philosophy, or Legal Studies",
       "Policy Analyst": "Public Policy, Political Science, Economics, International Relations, or Statistics",
       "Designer": "Design, Media Arts, Architecture, Human-Computer Interaction, or Fine Arts",
-      "Marketing Manager": "Business, Marketing, Communications, Psychology, or Economics"
+      "Marketing Manager": "Business, Marketing, Communications, Psychology, or Economics",
+      "Investment Banker": "Finance, Economics, Accounting, Business, or Applied Mathematics",
+      "Product Manager": "Computer Science, Business, Data Science, Design, or Economics",
+      "Teacher": "Education, Psychology, English, History, Math, or a subject-specific major",
+      "Psychologist": "Psychology, Neuroscience, Cognitive Science, Sociology, or Human Development",
+      "Environmental Scientist": "Environmental Science, Biology, Chemistry, Public Policy, or Sustainability Studies",
+      "Data Scientist": "Data Science, Statistics, Computer Science, Mathematics, or Economics"
     };
 
-    const collegeData = {
-      stanford: {
-        name: "Stanford University",
-        admitStyle: [
-          "Stanford uses a highly holistic review process with academics, essays, recommendations, activities, and personal qualities all mattering.",
-          "Your intended major should feel connected to your activities, projects, essays, and intellectual curiosity.",
-          "For competitive interests, show depth: research, leadership, original projects, or meaningful community impact."
-        ],
-        majorAdvice: "Build a story around curiosity, initiative, and real-world impact connected to your intended major."
+    const colleges = {
+      princeton: ["Princeton University", "holistic"],
+      mit: ["MIT", "stem"],
+      harvard: ["Harvard University", "holistic"],
+      stanford: ["Stanford University", "innovation"],
+      yale: ["Yale University", "liberal"],
+      penn: ["University of Pennsylvania", "preprofessional"],
+      caltech: ["Caltech", "stem"],
+      duke: ["Duke University", "impact"],
+      brown: ["Brown University", "liberal"],
+      johnshopkins: ["Johns Hopkins University", "research"],
+      northwestern: ["Northwestern University", "balanced"],
+      columbia: ["Columbia University", "liberal"],
+      cornell: ["Cornell University", "collegeSpecific"],
+      uchicago: ["University of Chicago", "intellectual"],
+      berkeley: ["UC Berkeley", "majorAware"],
+      ucla: ["UCLA", "majorAware"],
+      rice: ["Rice University", "research"],
+      vanderbilt: ["Vanderbilt University", "balanced"],
+      notredame: ["University of Notre Dame", "community"],
+      umich: ["University of Michigan", "majorAware"],
+      georgetown: ["Georgetown University", "policy"],
+      unc: ["UNC Chapel Hill", "public"],
+      cmu: ["Carnegie Mellon University", "stem"],
+      emory: ["Emory University", "research"],
+      uva: ["University of Virginia", "public"],
+      usc: ["USC", "programFit"],
+      nyu: ["NYU", "programFit"],
+      washu: ["Washington University in St. Louis", "balanced"],
+      ucsd: ["UC San Diego", "stem"],
+      uflorida: ["University of Florida", "public"],
+      utexas: ["University of Texas at Austin", "majorAware"],
+      gatech: ["Georgia Tech", "stem"],
+      ucdavis: ["UC Davis", "public"],
+      uci: ["UC Irvine", "public"],
+      illinois: ["University of Illinois Urbana-Champaign", "stem"],
+      wisco: ["University of Wisconsin-Madison", "public"],
+      bu: ["Boston University", "programFit"],
+      bc: ["Boston College", "community"],
+      tufts: ["Tufts University", "impact"],
+      purdue: ["Purdue University", "stem"],
+      osu: ["Ohio State University", "public"],
+      rutgers: ["Rutgers University", "public"],
+      umd: ["University of Maryland", "public"],
+      uwash: ["University of Washington", "majorAware"],
+      wakeforest: ["Wake Forest University", "balanced"],
+      lehigh: ["Lehigh University", "preprofessional"],
+      northeastern: ["Northeastern University", "experiential"],
+      casewestern: ["Case Western Reserve University", "research"],
+      tulane: ["Tulane University", "community"],
+      rochester: ["University of Rochester", "research"]
+    };
+
+    const collegeTypes = {
+      holistic: {
+        admitStyle: ["This school uses holistic admissions, so grades, rigor, essays, recommendations, activities, and personal qualities all matter.", "Your intended major should connect naturally to your classes, projects, activities, and essays.", "Depth matters more than joining random clubs."],
+        majorAdvice: "Build a clear academic story with strong coursework, one or two deep activities, and essays that show curiosity and character."
       },
-      mit: {
-        name: "MIT",
-        admitStyle: [
-          "MIT reviews applications holistically and places major value on problem-solving, collaboration, creativity, and academic preparation.",
-          "STEM-heavy applicants should show strong math, science, building, coding, research, or competition experience.",
-          "MIT does not just want perfect grades; it wants students who make things, solve problems, and contribute to others."
-        ],
-        majorAdvice: "Show proof that you can solve hard problems through projects, research, engineering builds, competitions, or advanced STEM classes."
+      stem: {
+        admitStyle: ["This school is especially strong in STEM, engineering, computing, or technical research.", "Applicants should show advanced math, science, coding, building, research, or competition experience.", "Major alignment becomes stronger when you can show real technical work, not just interest."],
+        majorAdvice: "Prioritize advanced STEM classes, projects, competitions, research, and technical leadership."
       },
-      berkeley: {
-        name: "UC Berkeley",
-        admitStyle: [
-          "UC Berkeley considers academic preparation, activities, essays, context, and the major or college selected.",
-          "Some paths, such as engineering, computer science, and business, can be especially competitive.",
-          "Your application should connect your course choices, activities, and essays to your selected academic direction."
-        ],
-        majorAdvice: "Choose your major carefully and show readiness through AP classes, strong grades, leadership, and major-related activities."
+      innovation: {
+        admitStyle: ["This school values academic strength, intellectual curiosity, initiative, creativity, and impact.", "Projects, leadership, research, entrepreneurship, or community work can help your major interest feel real.", "A strong application shows what you made, changed, led, or investigated."],
+        majorAdvice: "Show initiative through original projects, leadership, research, service, or entrepreneurship connected to your major."
       },
-      ucla: {
-        name: "UCLA",
-        admitStyle: [
-          "UCLA reviews academic achievement, activities, leadership, essays, and the context of your opportunities.",
-          "Some schools and majors, including engineering, arts, film, and other specialized programs, may require stronger major-specific preparation.",
-          "Creative or specialized applicants may need portfolios, auditions, or proof of serious preparation."
-        ],
-        majorAdvice: "Show both academic strength and a clear pattern of commitment to your field through activities, projects, and impact."
+      liberal: {
+        admitStyle: ["This school values intellectual curiosity, writing, discussion, exploration, and academic depth.", "You do not need to sound locked into one career, but your interests should feel thoughtful.", "Writing, research, reading, debate, and creative work can strengthen your academic profile."],
+        majorAdvice: "Focus on strong writing, deep curiosity, independent projects, and activities that reveal how you think."
       },
-      harvard: {
-        name: "Harvard University",
-        admitStyle: [
-          "Harvard uses holistic admissions and does not require every student to have a fixed career plan.",
-          "Academic excellence, meaningful extracurricular impact, strong writing, and personal character matter.",
-          "Instead of only naming a major, show why you are curious about that field and what impact you want to make."
-        ],
-        majorAdvice: "Focus on depth, leadership, originality, and a clear personal story connected to your academic interests."
+      preprofessional: {
+        admitStyle: ["This school often values career direction, leadership, initiative, and fit with the selected program.", "Business, engineering, nursing, policy, and other pre-professional paths may benefit from focused preparation.", "Activities should show leadership, results, and real-world problem-solving."],
+        majorAdvice: "Connect your major to internships, leadership, projects, measurable impact, and a specific career direction."
       },
-      usc: {
-        name: "USC",
-        admitStyle: [
-          "USC considers academics, essays, activities, leadership, and fit with the school or major.",
-          "Some programs, such as film, business, architecture, arts, and engineering, can need stronger major-specific preparation.",
-          "Students should show why USC and the chosen program match their goals."
-        ],
-        majorAdvice: "Connect your major interest to projects, leadership, creative work, internships, and a clear reason for choosing USC."
+      research: {
+        admitStyle: ["This school has a strong research culture and values academic seriousness.", "Research, advanced coursework, science fair, independent study, or strong writing can help demonstrate readiness.", "Your activities should show curiosity, persistence, and evidence-based thinking."],
+        majorAdvice: "Build a research-style profile with advanced classes, independent investigation, mentorship, or a serious project."
+      },
+      impact: {
+        admitStyle: ["This school values academic excellence, leadership, collaboration, service, and personal impact.", "A strong profile shows how you contribute to communities, teams, or causes.", "Major interest is stronger when connected to leadership or service."],
+        majorAdvice: "Show how your academic interests connect to leadership, collaboration, service, and real-world impact."
+      },
+      balanced: {
+        admitStyle: ["This school values strong academics, meaningful activities, essays, and fit.", "A balanced profile should show rigor, consistency, leadership, and personality.", "Major preparation matters most when your activities and classes support the same story."],
+        majorAdvice: "Create a balanced application with rigorous classes, a few deep activities, and essays that explain your direction."
+      },
+      collegeSpecific: {
+        admitStyle: ["This school may review applicants by college or school, so academic fit can matter a lot.", "Choosing the right college or program is important.", "Your coursework, essays, and activities should support the selected academic path."],
+        majorAdvice: "Make sure your selected school or college matches your classes, activities, essays, and career goal."
+      },
+      majorAware: {
+        admitStyle: ["This school may consider the major, college, or program you apply to.", "Some majors can be more competitive than others.", "Your application should show readiness through coursework, activities, projects, and essays."],
+        majorAdvice: "Choose your major carefully and show preparation through AP classes, strong grades, projects, and major-related activities."
+      },
+      policy: {
+        admitStyle: ["This school is especially strong for government, policy, international relations, law, and public service paths.", "Applicants should show writing, leadership, debate, civic engagement, service, or global awareness.", "Major interest is stronger when connected to public impact."],
+        majorAdvice: "Build a profile around writing, leadership, public service, debate, policy, or community problem-solving."
+      },
+      public: {
+        admitStyle: ["This public university often values academic preparation, course rigor, activities, essays, and fit with the selected major or program.", "Some majors may be more competitive due to demand.", "Strong applicants show preparation and impact with the opportunities available to them."],
+        majorAdvice: "Show academic readiness, consistent involvement, and a clear connection between your intended major and activities."
+      },
+      programFit: {
+        admitStyle: ["This school values fit with the specific school, program, or major.", "Specialized programs may expect portfolios, auditions, projects, internships, or strong major-related activities.", "Your essays should explain why this school and program match your goals."],
+        majorAdvice: "Be specific about the program and connect your activities, projects, and goals to what that school offers."
+      },
+      intellectual: {
+        admitStyle: ["This school values intellectual energy, originality, writing, and academic depth.", "Applicants should show that they enjoy ideas, questions, and independent thinking.", "Essays and academic interests can carry major weight."],
+        majorAdvice: "Use essays, research, writing, and independent projects to show how you think."
+      },
+      community: {
+        admitStyle: ["This school values academics, character, service, community, and leadership.", "A strong application shows both achievement and contribution to others.", "Major interest is stronger when connected to service, ethics, or community impact."],
+        majorAdvice: "Connect your academic interests to service, leadership, character, and contribution."
+      },
+      experiential: {
+        admitStyle: ["This school values career preparation, experience, co-ops, internships, and practical learning.", "Students should show initiative, independence, and interest in applying knowledge.", "Major fit is stronger when connected to internships, projects, or work experience."],
+        majorAdvice: "Build a practical profile with internships, projects, work experience, and clear career goals."
       }
     };
 
     const form = document.getElementById("plannerForm");
     const profile = document.getElementById("profile");
     const roadmap = document.getElementById("roadmap");
+    const ranking = document.getElementById("ranking");
 
-    function getGoalAdvice(goal, trackName) {
+    function getCollegeProfile(key) {
+      const college = colleges[key];
+      const type = collegeTypes[college[1]];
+      return {
+        name: college[0],
+        admitStyle: type.admitStyle,
+        majorAdvice: type.majorAdvice
+      };
+    }
+
+    function getGoalAdvice(goal) {
       return [
         "Because your goal is " + goal + ", look for classes and activities that directly prove interest in that path.",
         "Create a resume section called '" + goal + " Preparation' and add related projects, clubs, service, and internships.",
@@ -961,29 +972,16 @@
     function getStrengthAdvice(strengths) {
       const advice = [];
 
-      if (strengths.includes("Leadership")) {
-        advice.push("Use leadership by becoming a club officer, team captain, event organizer, or project lead.");
-      }
-
-      if (strengths.includes("Math")) {
-        advice.push("Use math strength by taking advanced math, joining math team, or adding data/statistics to a project.");
-      }
-
-      if (strengths.includes("Writing")) {
-        advice.push("Use writing strength by publishing articles, writing research summaries, or creating strong essays and proposals.");
-      }
-
-      if (strengths.includes("Research")) {
-        advice.push("Use research strength by entering science fair, contacting professors, or creating an independent research project.");
-      }
-
-      if (strengths.includes("Design")) {
-        advice.push("Use design strength by building a visual portfolio, designing presentations, or improving websites and social media for clubs.");
-      }
-
-      if (strengths.includes("Community Service")) {
-        advice.push("Use service strength by leading a volunteer project connected to your career interest.");
-      }
+      if (strengths.includes("Leadership")) advice.push("Use leadership by becoming a club officer, team captain, event organizer, or project lead.");
+      if (strengths.includes("Math")) advice.push("Use math strength by taking advanced math, joining math team, or adding data/statistics to a project.");
+      if (strengths.includes("Writing")) advice.push("Use writing strength by publishing articles, writing research summaries, or creating strong essays and proposals.");
+      if (strengths.includes("Research")) advice.push("Use research strength by entering science fair, contacting professors, or creating an independent research project.");
+      if (strengths.includes("Design")) advice.push("Use design strength by building a visual portfolio, designing presentations, or improving websites and social media for clubs.");
+      if (strengths.includes("Community Service")) advice.push("Use service strength by leading a volunteer project connected to your career interest.");
+      if (strengths.includes("Public Speaking")) advice.push("Use speaking strength through debate, presentations, advocacy, teaching, or student leadership.");
+      if (strengths.includes("Creativity")) advice.push("Use creativity by building original projects, campaigns, portfolios, or media that stand out.");
+      if (strengths.includes("Teamwork")) advice.push("Use teamwork by joining competitive teams, collaborative projects, or service groups with clear outcomes.");
+      if (strengths.includes("Problem Solving")) advice.push("Use problem solving by entering competitions, building prototypes, or fixing a real problem at school.");
 
       if (advice.length === 0) {
         advice.push("Select at least one strength so the planner can recommend a more personalized strategy.");
@@ -1001,19 +999,58 @@
       `).join("");
     }
 
+    function rankExtracurriculars(track, strengths) {
+      const combined = [...track.extras, ...track.activities];
+
+      const ranked = combined.slice(0, 4).map((activity, index) => {
+        const labels = ["Strongest Free Recommendation", "High-Value Activity", "Good Supporting Activity", "Useful Starter Activity"];
+        const reasons = [
+          "This has the strongest mix of leadership, uniqueness, and connection to your interest.",
+          "This can help show commitment if you stay consistent and build measurable impact.",
+          "This supports your profile, especially when connected to a project or role.",
+          "This is a good starting point, but Premium would help you improve it into something stronger."
+        ];
+
+        return {
+          activity: activity,
+          label: labels[index],
+          reason: reasons[index]
+        };
+      });
+
+      const strengthBoost = strengths.length
+        ? "Your selected strengths suggest you should focus on activities where you can show " + strengths.join(", ") + "."
+        : "Select strengths to get a better free ranking.";
+
+      ranking.innerHTML = `
+        <div class="ranking-grid">
+          ${ranked.map(item => `
+            <div class="rank-card">
+              <span class="rank-label">${item.label}</span>
+              <h3>${item.activity}</h3>
+              <p>${item.reason}</p>
+            </div>
+          `).join("")}
+        </div>
+
+        <div class="premium-lock">
+          <strong>Premium preview:</strong> ${strengthBoost}
+          Upgrade to get exact extracurricular scores, weakness detection, essay angle suggestions,
+          and niche opportunity matches.
+        </div>
+      `;
+    }
+
     function generatePlan() {
       const grade = document.getElementById("grade").value;
       const interest = document.getElementById("interest").value;
       const goal = document.getElementById("goal").value;
       const collegeKey = document.getElementById("college").value;
-      const college = collegeData[collegeKey];
+      const college = getCollegeProfile(collegeKey);
       const recommendedMajor = careerMajorMap[goal];
-
-      const selected = [...document.querySelectorAll("input[type='checkbox']:checked")]
-        .map(box => box.value);
-
+      const selected = [...document.querySelectorAll("input[type='checkbox']:checked")].map(box => box.value);
       const track = data[interest];
-      const goalAdvice = getGoalAdvice(goal, track.name);
+      const goalAdvice = getGoalAdvice(goal);
       const strengthAdvice = getStrengthAdvice(selected);
 
       profile.innerHTML = `
@@ -1085,6 +1122,8 @@
           </div>
         </div>
       `;
+
+      rankExtracurriculars(track, selected);
     }
 
     form.addEventListener("submit", function(event) {
@@ -1095,5 +1134,4 @@
 
     generatePlan();
   </script>
-</body>
-</html>
+</body
